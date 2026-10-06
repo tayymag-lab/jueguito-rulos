@@ -1,79 +1,139 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Para nosotros ♡</title>
+<title>Para nosotros ♡</title>
 
-  <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #f8edf2;
-      font-family: Arial, sans-serif;
-      color: #4a303b;
-      text-align: center;
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(145deg, #160d13, #2b111c, #12090e);
+    color: #fff;
+    font-family: Georgia, serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.contenedor {
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    animation: aparecer 2s ease;
+}
+
+.corazon {
+    font-size: 55px;
+    animation: latir 2s infinite;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 38px;
+    font-weight: normal;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+.subtitulo {
+    margin-top: 15px;
+    font-size: 17px;
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+button {
+    margin-top: 35px;
+    padding: 15px 38px;
+    border: 1px solid #d99aaa;
+    border-radius: 30px;
+    background: transparent;
+    color: white;
+    font-size: 16px;
+    font-family: Georgia, serif;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #d99aaa;
+    color: #210d15;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
     }
 
-    .pantalla {
-      width: 90%;
-      max-width: 500px;
-      padding: 30px;
-      box-sizing: border-box;
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes latir {
+    0%, 100% {
+        transform: scale(1);
     }
 
-    h1 {
-      font-size: 32px;
-      margin-bottom: 15px;
+    50% {
+        transform: scale(1.15);
     }
+}
 
-    p {
-      font-size: 18px;
-      line-height: 1.6;
-    }
-
-    button {
-      margin-top: 25px;
-      padding: 14px 28px;
-      border: none;
-      border-radius: 25px;
-      background: #b85c7a;
-      color: white;
-      font-size: 17px;
-      cursor: pointer;
-    }
-
-    button:active {
-      transform: scale(0.96);
-    }
-  </style>
+</style>
 </head>
 
 <body>
 
-  <div class="pantalla">
+<div class="contenedor">
 
-    <h1>♡ Para nosotros ♡</h1>
+    <div class="corazon">♡</div>
 
-    <p>
-      Tengo algo preparado para vos...
-    </p>
+    <h1>Para nosotros</h1>
+
+    <div class="subtitulo">
+        Una pequeña historia que solamente<br>
+        nosotros dos conocemos.
+    </div>
 
     <button onclick="comenzar()">
-      Comenzar
+        Comenzar ♡
     </button>
 
-  </div>
+</div>
 
-  <script>
-    function comenzar() {
-      alert("Nuestro juego comienza acá ♡");
-    }
-  </script>
+<script>
+
+function comenzar() {
+
+    document.querySelector(".contenedor").innerHTML = `
+        <div class="corazon">💌</div>
+
+        <h1>Antes de empezar...</h1>
+
+        <div class="subtitulo">
+            Hay algunas cosas que quiero preguntarte.<br><br>
+            Respondé con sinceridad.
+        </div>
+
+        <button onclick="alert('Acá comenzará nuestro juego ♡')">
+            Estoy listo ♡
+        </button>
+    `;
+
+}
+
+</script>
 
 </body>
 </html>
