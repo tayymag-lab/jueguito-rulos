@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -15,82 +17,147 @@
 body {
     margin: 0;
     min-height: 100vh;
-    background: linear-gradient(145deg, #160d13, #2b111c, #12090e);
+
+    background:
+        radial-gradient(circle at top, #3a1828, transparent 45%),
+        linear-gradient(145deg, #12090e, #29121d, #0d070a);
+
     color: #fff;
+
     font-family: Georgia, serif;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     overflow: hidden;
 }
 
 .contenedor {
+
     width: 90%;
     max-width: 500px;
+
     text-align: center;
-    animation: aparecer 2s ease;
+
+    animation: aparecer 1s ease;
 }
 
 .corazon {
+
     font-size: 55px;
-    animation: latir 2s infinite;
+
     margin-bottom: 20px;
+
+    animation: latir 2s infinite;
 }
 
 h1 {
-    font-size: 38px;
+
+    font-size: 34px;
+
     font-weight: normal;
+
     letter-spacing: 2px;
-    margin: 0;
+
+    margin: 0 0 20px;
 }
 
 .subtitulo {
-    margin-top: 15px;
+
     font-size: 17px;
-    opacity: 0.8;
-    line-height: 1.6;
+
+    line-height: 1.7;
+
+    color: #eadde2;
+}
+
+.opciones {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-top: 30px;
 }
 
 button {
-    margin-top: 35px;
-    padding: 15px 38px;
-    border: 1px solid #d99aaa;
+
+    width: 100%;
+
+    padding: 15px 20px;
+
+    border: 1px solid #c9889d;
+
     border-radius: 30px;
-    background: transparent;
+
+    background: rgba(255,255,255,0.03);
+
     color: white;
+
     font-size: 16px;
+
     font-family: Georgia, serif;
+
     transition: 0.3s;
 }
 
 button:hover {
-    background: #d99aaa;
+
+    background: #c9889d;
+
     color: #210d15;
+
+    transform: translateY(-2px);
+}
+
+.pequeno {
+
+    margin-top: 25px;
+
+    font-size: 13px;
+
+    opacity: 0.55;
 }
 
 @keyframes aparecer {
+
     from {
+
         opacity: 0;
+
         transform: translateY(25px);
+
     }
 
     to {
+
         opacity: 1;
+
         transform: translateY(0);
+
     }
 }
 
 @keyframes latir {
+
     0%, 100% {
+
         transform: scale(1);
+
     }
 
     50% {
-        transform: scale(1.15);
+
+        transform: scale(1.12);
+
     }
 }
 
 </style>
+
 </head>
 
 <body>
@@ -102,15 +169,20 @@ button:hover {
     <h1>Para nosotros</h1>
 
     <div class="subtitulo">
-        Una pequeña historia que solamente<br>
+
+        Una pequeña historia que solamente
         nosotros dos conocemos.
+
     </div>
 
     <button onclick="comenzar()">
+
         Comenzar ♡
+
     </button>
 
 </div>
+
 
 <script>
 
@@ -118,27 +190,36 @@ function comenzar() {
 
     document.querySelector(".contenedor").innerHTML = `
 
-        <div class="corazon">♡</div>
+        <div class="corazon">💌</div>
 
         <h1>01 — Nosotros</h1>
 
         <div class="subtitulo">
-            Todo empezó mucho antes de que
-            supiéramos dónde iba a llevarnos.
+
+            Antes de seguir...
+
             <br><br>
 
-            ¿Cómo nos conocimos?
+            quiero volver al principio.
+
+            <br><br>
+
+            Hay algo que quiero saber de vos.
+
         </div>
 
-        <button onclick="respuesta1()">
-            Ver la pregunta ♡
+        <button onclick="pregunta1()">
+
+            Continuar ♡
+
         </button>
 
     `;
 
 }
 
-function respuesta1() {
+
+function pregunta1() {
 
     document.querySelector(".contenedor").innerHTML = `
 
@@ -147,44 +228,185 @@ function respuesta1() {
         <h1>El comienzo</h1>
 
         <div class="subtitulo">
-            Primero te conocí en una especie de reunión.
+
+            Cuando nos conocimos...
+
             <br><br>
 
-            Desde ese momento llamaste mi atención.
-            Después hablamos por primera vez...
-            y fue algo bastante normal.
+            <strong>
+            ¿Qué fue lo primero que pensaste de mí?
+            </strong>
+
+        </div>
+
+        <div class="opciones">
+
+            <button onclick="respuesta('A')">
+                Me llamó la atención
+            </button>
+
+            <button onclick="respuesta('B')">
+                Me pareció interesante
+            </button>
+
+            <button onclick="respuesta('C')">
+                No pensé demasiado
+            </button>
+
+            <button onclick="respuesta('D')">
+                No sabía que iba a terminar así
+            </button>
+
+        </div>
+
+        <div class="pequeno">
+            Elegí la respuesta que más se parezca a vos ♡
+        </div>
+
+    `;
+
+}
+
+
+function respuesta(opcion) {
+
+    let mensaje = "";
+
+    if (opcion === "A") {
+
+        mensaje = `
+            Entonces hubo algo desde el principio... ♡
+        `;
+
+    }
+
+    if (opcion === "B") {
+
+        mensaje = `
+            Quizás todavía no lo sabías,
+            pero algo había empezado. ♡
+        `;
+
+    }
+
+    if (opcion === "C") {
+
+        mensaje = `
+            Y miranos ahora...
+            quién iba a imaginarlo. ♡
+        `;
+
+    }
+
+    if (opcion === "D") {
+
+        mensaje = `
+            Tal vez esa sea justamente
+            la parte más linda de nuestra historia. ♡
+        `;
+
+    }
+
+
+    document.querySelector(".contenedor").innerHTML = `
+
+        <div class="corazon">♡</div>
+
+        <h1>Tu respuesta</h1>
+
+        <div class="subtitulo">
+
+            ${mensaje}
+
             <br><br>
 
-            Hasta que llegó Año Nuevo.
+            <span style="opacity:0.7">
+            Pero esto recién empieza...
+            </span>
+
         </div>
 
         <button onclick="pregunta2()">
-            Continuar ♡
+
+            Siguiente ♡
+
         </button>
 
     `;
 
 }
 
+
 function pregunta2() {
 
     document.querySelector(".contenedor").innerHTML = `
 
-        <div class="corazon">♡</div>
+        <div class="corazon">🌙</div>
 
         <h1>01.02</h1>
 
         <div class="subtitulo">
-            Y ahora quiero saber algo...
+
+            Después de conocernos...
+
             <br><br>
 
             <strong>
-            ¿Qué fue lo primero que pensaste de mí?
+            ¿En qué momento sentiste que
+            empezaba a gustarte de verdad?
             </strong>
+
         </div>
 
-        <button onclick="alert('Esta parte la vamos a convertir después en una pregunta interactiva ♡')">
-            Responder ♡
+        <div class="opciones">
+
+            <button onclick="finalPregunta()">
+                Desde el principio ♡
+            </button>
+
+            <button onclick="finalPregunta()">
+                Después de hablar más
+            </button>
+
+            <button onclick="finalPregunta()">
+                En algún momento inesperado
+            </button>
+
+            <button onclick="finalPregunta()">
+                Todavía estoy intentando descubrirlo
+            </button>
+
+        </div>
+
+    `;
+
+}
+
+
+function finalPregunta() {
+
+    document.querySelector(".contenedor").innerHTML = `
+
+        <div class="corazon">💗</div>
+
+        <h1>Seguimos...</h1>
+
+        <div class="subtitulo">
+
+            Cada respuesta nos acerca
+            un poquito más al final.
+
+            <br><br>
+
+            Y todavía quedan muchas
+            cosas por descubrir.
+
+        </div>
+
+        <button onclick="alert('El próximo nivel está por venir ♡')">
+
+            Continuar
+
         </button>
 
     `;
@@ -192,5 +414,7 @@ function pregunta2() {
 }
 
 </script>
+
 </body>
+
 </html>
