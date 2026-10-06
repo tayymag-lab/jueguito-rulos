@@ -117,23 +117,80 @@ button:hover {
 function comenzar() {
 
     document.querySelector(".contenedor").innerHTML = `
-        <div class="corazon">💌</div>
 
-        <h1>Antes de empezar...</h1>
+        <div class="corazon">♡</div>
+
+        <h1>01 — Nosotros</h1>
 
         <div class="subtitulo">
-            Hay algunas cosas que quiero preguntarte.<br><br>
-            Respondé con sinceridad.
+            Todo empezó mucho antes de que
+            supiéramos dónde iba a llevarnos.
+            <br><br>
+
+            ¿Cómo nos conocimos?
         </div>
 
-        <button onclick="alert('Acá comenzará nuestro juego ♡')">
-            Estoy listo ♡
+        <button onclick="respuesta1()">
+            Ver la pregunta ♡
         </button>
+
+    `;
+
+}
+
+function respuesta1() {
+
+    document.querySelector(".contenedor").innerHTML = `
+
+        <div class="corazon">💭</div>
+
+        <h1>El comienzo</h1>
+
+        <div class="subtitulo">
+            Primero te conocí en una especie de reunión.
+            <br><br>
+
+            Desde ese momento llamaste mi atención.
+            Después hablamos por primera vez...
+            y fue algo bastante normal.
+            <br><br>
+
+            Hasta que llegó Año Nuevo.
+        </div>
+
+        <button onclick="pregunta2()">
+            Continuar ♡
+        </button>
+
+    `;
+
+}
+
+function pregunta2() {
+
+    document.querySelector(".contenedor").innerHTML = `
+
+        <div class="corazon">♡</div>
+
+        <h1>01.02</h1>
+
+        <div class="subtitulo">
+            Y ahora quiero saber algo...
+            <br><br>
+
+            <strong>
+            ¿Qué fue lo primero que pensaste de mí?
+            </strong>
+        </div>
+
+        <button onclick="alert('Esta parte la vamos a convertir después en una pregunta interactiva ♡')">
+            Responder ♡
+        </button>
+
     `;
 
 }
 
 </script>
-
 </body>
 </html>
