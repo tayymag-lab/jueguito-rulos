@@ -14,8 +14,11 @@ const Juego = {
 
         this.pantalla.classList.remove("escena-visible");
 
-        this.pantalla.innerHTML = contenido;
-        this.pantalla.classList.add("escena-visible");
+this.pantalla.innerHTML = contenido;
+
+void this.pantalla.offsetWidth;
+
+this.pantalla.classList.add("escena-visible");
     },
 
     celebrar() {
