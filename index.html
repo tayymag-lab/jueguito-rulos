@@ -432,9 +432,9 @@ function menuNiveles() {
     ♡ 02 — Nuestra apuesta
 </button>
 
-            <button onclick="alert('Este recuerdo todavía está bloqueado ♡')">
-                🔒 03 — Siete meses
-            </button>
+            <<button onclick="capitulo03()">
+    ♡ 03 — Siete meses
+</button>
 
             <button onclick="alert('La sorpresa final todavía está bloqueada ♡')">
                 🔒 04 — Una carta para vos
@@ -580,6 +580,140 @@ function final02() {
         </button>
     `;
 }
+
+
+function capitulo03() {
+    document.querySelector(".contenedor").innerHTML = `
+        <div class="corazon">🍔</div>
+        <h1>03 — Siete meses</h1>
+        <div class="subtitulo">
+            Todo empezó con una apuesta...
+            <br><br>
+            Y una promesa que, por suerte,
+            terminaste cumpliendo.
+            <br><br>
+            ¿Te acordás de nuestro primer almuerzo?
+        </div>
+        <button onclick="almuerzo03()">
+            Recordarlo ♡
+        </button>
+    `;
+}
+
+function almuerzo03() {
+    document.querySelector(".contenedor").innerHTML = `
+        <div class="corazon">🍟</div>
+        <h1>Una cita inesperada</h1>
+        <div class="subtitulo">
+            Lo que comenzó como una apuesta
+            terminó convirtiéndose en
+            nuestro primer almuerzo juntos.
+            <br><br>
+            Tal vez ninguno imaginaba
+            lo importante que sería
+            ese pequeño momento.
+            <br><br>
+            Pero nuestra historia
+            apenas estaba empezando...
+        </div>
+        <button onclick="reserva03()">
+            Continuar ♡
+        </button>
+    `;
+}
+
+function reserva03() {
+    document.querySelector(".contenedor").innerHTML = `
+        <div class="corazon">🌿</div>
+        <h1>Un lugar especial</h1>
+        <div class="subtitulo">
+            Después de aquel primer almuerzo,
+            hubo un lugar que terminó
+            siendo parte de nuestra historia.
+            <br><br>
+            ¿Dónde fue nuestro primer beso?
+        </div>
+        <div class="opciones">
+            <button onclick="respuesta03(false)">
+                En una plaza
+            </button>
+            <button onclick="respuesta03(true)">
+                En la Reserva Ecológica de Palermo
+            </button>
+            <button onclick="respuesta03(false)">
+                En un restaurante
+            </button>
+        </div>
+    `;
+}
+
+function respuesta03(correcta) {
+    if (correcta) {
+        document.querySelector(".contenedor").innerHTML = `
+            <div class="corazon">💗</div>
+            <h1>¡Recuerdo desbloqueado!</h1>
+            <div class="subtitulo">
+                ¡Te acordaste! ♡
+                <br><br>
+                La Reserva Ecológica de Palermo.
+                <br><br>
+                El lugar donde nos dimos
+                nuestro primer beso.
+                <br><br>
+                Uno de esos recuerdos
+                que siempre voy a guardar.
+            </div>
+            <button onclick="final03()">
+                Continuar ♡
+            </button>
+        `;
+    } else {
+        document.querySelector(".contenedor").innerHTML = `
+            <div class="corazon">😭</div>
+            <h1>¡Rulings!</h1>
+            <div class="subtitulo">
+                ¿Otra vez problemas
+                con la memoria?
+                <br><br>
+                JAJAJA, no puede ser.
+                <br><br>
+                Te doy otra oportunidad,
+                pero esta vez pensalo bien. ♡
+            </div>
+            <button onclick="reserva03()">
+                Intentar otra vez
+            </button>
+        `;
+    }
+}
+
+function final03() {
+    document.querySelector(".contenedor").innerHTML = `
+        <div class="corazon">♡</div>
+        <h1>Y acá estamos...</h1>
+        <div class="subtitulo">
+            Desde aquella apuesta,
+            aquel almuerzo y nuestro
+            primer beso...
+            <br><br>
+            Hasta todos los momentos
+            que vinieron después.
+            <br><br>
+            Si pudiera volver a ese día,
+            elegiría vivirlo otra vez.
+            <br><br>
+            Porque me gusta pensar
+            que todavía nos quedan
+            muchísimos recuerdos por crear.
+            <br><br>
+            <em>Con amor, Maggie. ♡</em>
+        </div>
+        <button onclick="menuNiveles()">
+            Volver a nuestro universo 🌙
+        </button>
+    `;
+}
+
 
 </script>
 
