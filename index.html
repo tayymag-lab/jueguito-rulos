@@ -186,6 +186,43 @@ button:hover {
 
 <script>
 
+function menuNiveles() {
+    document.querySelector(".contenedor").innerHTML = `
+        <div class="corazon">🌙</div>
+
+        <h1>Nuestro universo</h1>
+
+        <div class="subtitulo">
+            Cada recuerdo guarda una parte
+            de nuestra historia.
+            <br><br>
+            ¿Qué capítulo querés descubrir?
+        </div>
+
+        <div class="opciones">
+            <button onclick="pregunta1()">
+                ♡ 01 — El comienzo
+            </button>
+
+  <button onclick="capitulo02()">
+    ♡ 02 — Nuestra apuesta
+</button>
+
+            <button onclick="capitulo03()">
+    ♡ 03 — Siete meses
+</button>
+
+          <button onclick="capitulo04()">
+    ♡ 04 — Una carta para vos
+</button>
+        </div>
+
+        <div class="pequeno">
+            Maggie × Rulitos · Una historia nuestra
+        </div>
+    `;
+}
+
 function comenzar() {
 
     document.querySelector(".contenedor").innerHTML = `
@@ -410,43 +447,6 @@ function finalPregunta() {
     `;
 
 }
-function menuNiveles() {
-    document.querySelector(".contenedor").innerHTML = `
-        <div class="corazon">🌙</div>
-
-        <h1>Nuestro universo</h1>
-
-        <div class="subtitulo">
-            Cada recuerdo guarda una parte
-            de nuestra historia.
-            <br><br>
-            ¿Qué capítulo querés descubrir?
-        </div>
-
-        <div class="opciones">
-            <button onclick="pregunta1()">
-                ♡ 01 — El comienzo
-            </button>
-
-  <button onclick="capitulo02()">
-    ♡ 02 — Nuestra apuesta
-</button>
-
-            <button onclick="capitulo03()">
-    ♡ 03 — Siete meses
-</button>
-
-          <button onclick="capitulo04()">
-    ♡ 04 — Una carta para vos
-</button>
-        </div>
-
-        <div class="pequeno">
-            Maggie × Rulitos · Una historia nuestra
-        </div>
-    `;
-}
-
 
 function capitulo02() {
     document.querySelector(".contenedor").innerHTML = `
