@@ -1,0 +1,127 @@
+
+/* LA DEUDA DE RULINGS */
+
+.arcade {
+    width: 100%;
+    margin-top: 18px;
+}
+
+.arcade-hud {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
+    margin-bottom: 12px;
+}
+
+.arcade-dato {
+    background: #321624;
+    border: 1px solid #80506a;
+    border-radius: 9px;
+    padding: 9px 4px;
+}
+
+.arcade-dato small {
+    display: block;
+    color: #d995ad;
+    font-size: 10px;
+    margin-bottom: 5px;
+}
+
+.arcade-dato strong {
+    color: #fff0f4;
+    font-size: 15px;
+}
+
+.arcade-campo {
+    position: relative;
+    height: 330px;
+    overflow: hidden;
+    touch-action: none;
+    user-select: none;
+
+    border: 2px solid #a85f7d;
+    border-radius: 12px;
+
+    background:
+        radial-gradient(circle at 50% 15%, #69364f, transparent 65%),
+        linear-gradient(#241321, #12090e);
+}
+
+.arcade-campo::before {
+    content: "✦       ·       ✧       ·       ✦";
+    position: absolute;
+    top: 15px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #d995ad66;
+    pointer-events: none;
+}
+
+.arcade-jugador {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    width: 68px;
+    height: 74px;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.arcade-avatar {
+    font-size: 35px;
+    line-height: 1;
+}
+
+.arcade-canasta {
+    font-size: 30px;
+    line-height: 1;
+    margin-top: -4px;
+}
+
+.arcade-objeto {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 29px;
+    line-height: 1;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    will-change: transform;
+}
+
+.arcade-mensaje {
+    margin: 12px 0;
+    color: #f4dde5;
+    font-size: 13px;
+    min-height: 22px;
+}
+
+.arcade-ayuda {
+    font-size: 12px;
+    color: #d995ad;
+    margin-top: 10px;
+}
+
+.arcade-campo:focus-visible {
+    outline: 3px solid #f4dde5;
+}
+
+@media (max-width: 400px) {
+    .arcade-campo {
+        height: 300px;
+    }
+
+    .arcade-dato strong {
+        font-size: 13px;
+    }
+}
