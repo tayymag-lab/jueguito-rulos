@@ -186,73 +186,107 @@ button:hover {
 
 <script>
 
+
+function comenzar() {
+    if (localStorage.getItem("instruccionesVistas") === "si") {
+        menuNiveles();
+        return;
+    }
+
+    document.querySelector(".contenedor").innerHTML = `
+        <div class="corazon">🎮</div>
+        <h1>Antes de comenzar...</h1>
+
+        <div class="subtitulo">
+            Bienvenido a nuestro pequeño universo.
+            <br><br>
+            ♡ Cada capítulo guarda un recuerdo.
+            <br><br>
+            ♡ Tendrás que completar los niveles
+            en orden para desbloquear los siguientes.
+            <br><br>
+            ♡ Algunas decisiones pondrán a prueba
+            tu memoria.
+            <br><br>
+            ♡ Tu progreso se guardará automáticamente
+            en este dispositivo y navegador.
+            <br><br>
+            Y lo más importante...
+            disfrutá de nuestra historia. ♡
+        </div>
+
+        <button onclick="terminarInstrucciones()">
+            Entendido, ¡a jugar! ♡
+        </button>
+    `;
+}
+
+function terminarInstrucciones() {
+    localStorage.setItem("instruccionesVistas", "si");
+    menuNiveles();
+}
+
+
 function menuNiveles() {
+    let nivel = Number(localStorage.getItem("nivelDesbloqueado") || 1);
+    nivel = Math.min(4, Math.max(1, nivel));
+
+    function boton(numero, nombre, funcion) {
+        if (nivel >= numero) {
+            return `
+                <button onclick="${funcion}()">
+                    ♡ 0${numero} — ${nombre}
+                </button>
+            `;
+        }
+
+        return `
+            <button disabled style="
+                opacity: 0.35;
+                cursor: not-allowed;
+                border-color: #765665;
+            ">
+                🔒 0${numero} — ${nombre}
+            </button>
+        `;
+    }
+
     document.querySelector(".contenedor").innerHTML = `
         <div class="corazon">🌙</div>
-
         <h1>Nuestro universo</h1>
 
         <div class="subtitulo">
             Cada recuerdo guarda una parte
             de nuestra historia.
             <br><br>
-            ¿Qué capítulo querés descubrir?
+            Completá los capítulos para
+            descubrir lo que viene después.
         </div>
 
         <div class="opciones">
-            <button onclick="pregunta1()">
-                ♡ 01 — El comienzo
-            </button>
-
-  <button onclick="capitulo02()">
-    ♡ 02 — Nuestra apuesta
-</button>
-
-            <button onclick="capitulo03()">
-    ♡ 03 — Siete meses
-</button>
-
-          <button onclick="capitulo04()">
-    ♡ 04 — Una carta para vos
-</button>
+            ${boton(1, "El comienzo", "pregunta1")}
+            ${boton(2, "Nuestra apuesta", "capitulo02")}
+            ${boton(3, "Siete meses", "capitulo03")}
+            ${boton(4, "Una carta para vos", "capitulo04")}
         </div>
 
         <div class="pequeno">
-            Maggie × Rulitos · Una historia nuestra
+            Progreso: ${nivel} de 4 capítulos disponibles ♡
         </div>
+
+<button onclick="reiniciarJuego()"
+    style="margin-top:20px; font-size:12px; opacity:0.5;">
+    Reiniciar progreso
+</button>
     `;
 }
 
-function comenzar() {
+function desbloquearNivel(numero) {
+    let actual = Number(localStorage.getItem("nivelDesbloqueado") || 1);
 
-    document.querySelector(".contenedor").innerHTML = `
-
-        <div class="corazon">💌</div>
-
-        <h1>01 — Nosotros</h1>
-
-        <div class="subtitulo">
-
-            Antes de seguir...
-
-            <br><br>
-
-            quiero volver al principio.
-
-            <br><br>
-
-            Hay algo que quiero saber de vos... 
-
-        </div>
-
-        <button onclick="pregunta1()">
-
-            ♡ Continuar ♡
-
-        </button>
-
-    `;
-
+    if (numero > actual) {
+        localStorage.setItem("nivelDesbloqueado", String(numero));
+    }
 }
 
 
@@ -422,6 +456,8 @@ function pregunta2() {
 
 function finalPregunta() {
 
+desbloquearNivel(2);
+
     document.querySelector(".contenedor").innerHTML = `
 
         <div class="corazon">💗</div>
@@ -441,7 +477,7 @@ function finalPregunta() {
         </div>
 
 <button onclick="menuNiveles()">
-    ♡ Primeros recuerdos ♡
+    Continuar al menú ♡
 </button>
 
     `;
@@ -556,7 +592,7 @@ function resultado02(opcion) {
 }
 
 function final02() {
-    document.querySelector(".contenedor").innerHTML = `
+   desbloquearNivel(3); document.querySelector(".contenedor").innerHTML = `
         <div class="corazon">💗</div>
         <h1>Y pensar que...</h1>
 
@@ -688,6 +724,7 @@ function respuesta03(correcta) {
 }
 
 function final03() {
+  desbloquearNivel(4);
     document.querySelector(".contenedor").innerHTML = `
         <div class="corazon">♡</div>
         <h1>Y acá estamos...</h1>
@@ -808,6 +845,14 @@ function finalJuego() {
     `;
 }
 
+
+function reiniciarJuego() {
+    if (confirm("¿Querés borrar el progreso y comenzar desde cero?")) {
+        localStorage.removeItem("nivelDesbloqueado");
+        localStorage.removeItem("instruccionesVistas");
+        location.reload();
+    }
+}
 
 </script>
 
