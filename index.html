@@ -35,7 +35,7 @@
 
 </div>
 
-
+<script src="js/game.js"></script>
 <script>
 
 
@@ -337,7 +337,7 @@ desbloquearNivel(2);
 }
 
 function capitulo02() {
-    document.querySelector(".contenedor").innerHTML = `
+   Juego.mostrar(`
         <div class="corazon">🎮</div>
         <h1>La apuesta</h1>
 
@@ -355,7 +355,7 @@ function capitulo02() {
 
         <button onclick="apuesta02()">Aceptar la misión</button>
         <div class="pequeno">Maggie × Rulitos</div>
-    `;
+    `);
 }
 
 function apuesta02() {
