@@ -436,9 +436,9 @@ function menuNiveles() {
     ♡ 03 — Siete meses
 </button>
 
-            <button onclick="alert('La sorpresa final todavía está bloqueada ♡')">
-                🔒 04 — Una carta para vos
-            </button>
+          <button onclick="capitulo04()">
+    ♡ 04 — Una carta para vos
+</button>
         </div>
 
         <div class="pequeno">
@@ -711,6 +711,100 @@ function final03() {
         <button onclick="menuNiveles()">
             Volver a nuestro universo 🌙
         </button>
+    `;
+}
+
+
+
+function capitulo04() {
+    document.querySelector(".contenedor").innerHTML = `
+        <div class="corazon">🔐</div>
+        <h1>El último secreto</h1>
+
+        <div class="subtitulo">
+            Llegaste hasta acá...
+            <br><br>
+            Después de recordar nuestra apuesta,
+            aquel almuerzo y nuestro primer beso,
+            todavía queda algo por descubrir.
+            <br><br>
+            No es una pregunta.
+            No hay respuestas correctas.
+            <br><br>
+            Esta vez, solo quiero que leas.
+        </div>
+
+        <button onclick="abrirCarta04()">
+            Abrir el último regalo ♡
+        </button>
+    `;
+}
+
+function abrirCarta04() {
+    document.querySelector(".contenedor").innerHTML = `
+        <div class="corazon">💌</div>
+        <h1>Para vos, Rulings</h1>
+
+        <div class="subtitulo">
+            No sé en qué momento exacto
+            empezaste a convertirte en alguien
+            tan importante para mí.
+            <br><br>
+            Quizás fue aquella noche
+            en la que hablamos de cualquier cosa.
+            O cuando te olvidaste de mi nombre
+            y terminaste debiéndome un almuerzo.
+            <br><br>
+            Lo que sí sé es que me alegra
+            muchísimo haberte conocido.
+            <br><br>
+            Me gustan nuestros recuerdos,
+            nuestras conversaciones y hasta
+            esas pequeñas tonterías que
+            solamente nosotros entendemos.
+            <br><br>
+            Gracias por formar parte
+            de mi vida y por todos
+            los momentos que compartimos.
+            <br><br>
+            Y aunque este jueguito llegue
+            a su final, espero que nosotros
+            sigamos escribiendo nuestra historia.
+            <br><br>
+            <em>Con mucho amor, Maggie. ♡</em>
+        </div>
+
+        <button onclick="finalJuego()">
+            Continuar ♡
+        </button>
+    `;
+}
+
+function finalJuego() {
+    document.querySelector(".contenedor").innerHTML = `
+        <div class="corazon">💗</div>
+        <h1>Maggie & Rulings</h1>
+
+        <div class="subtitulo">
+            Una apuesta.
+            <br>
+            Un almuerzo.
+            <br>
+            Un primer beso.
+            <br><br>
+            Y una historia que
+            todavía tiene mucho por contar.
+            <br><br>
+            ♡ Gracias por jugar ♡
+        </div>
+
+        <button onclick="menuNiveles()">
+            Volver a nuestros recuerdos
+        </button>
+
+        <div class="pequeno">
+            Hecho con amor, especialmente para vos.
+        </div>
     `;
 }
 
