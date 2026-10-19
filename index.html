@@ -144,7 +144,7 @@ function desbloquearNivel(numero) {
 
 function pregunta1() {
 
-    document.querySelector(".contenedor").innerHTML = `
+    Juego.mostrar(`
 
         <div class="corazon">💭</div>
 
@@ -186,7 +186,7 @@ function pregunta1() {
             Elegí la respuesta que más se parezca a vos 
         </div>
 
-    `;
+    `) ;
 
 }
 
@@ -309,6 +309,7 @@ function pregunta2() {
 function finalPregunta() {
 
 desbloquearNivel(2);
+Juego.celebrar();
 
     document.querySelector(".contenedor").innerHTML = `
 
@@ -444,7 +445,9 @@ function resultado02(opcion) {
 }
 
 function final02() {
-   desbloquearNivel(3); document.querySelector(".contenedor").innerHTML = `
+   desbloquearNivel(3);
+Juego.celebrar();
+ document.querySelector(".contenedor").innerHTML = `
         <div class="corazon">💗</div>
         <h1>Y pensar que...</h1>
 
@@ -471,7 +474,7 @@ function final02() {
 
 
 function capitulo03() {
-    document.querySelector(".contenedor").innerHTML = `
+   Juego.mostrar(`
         <div class="corazon">🍔</div>
         <h1>03 — Siete meses</h1>
         <div class="subtitulo">
@@ -485,7 +488,7 @@ function capitulo03() {
         <button onclick="almuerzo03()">
             Recordarlo ♡
         </button>
-    `;
+    `);
 }
 
 function almuerzo03() {
@@ -577,6 +580,7 @@ function respuesta03(correcta) {
 
 function final03() {
   desbloquearNivel(4);
+Juego.celebrar();
     document.querySelector(".contenedor").innerHTML = `
         <div class="corazon">♡</div>
         <h1>Y acá estamos...</h1>
@@ -606,7 +610,7 @@ function final03() {
 
 
 function capitulo04() {
-    document.querySelector(".contenedor").innerHTML = `
+   Juego.mostrar(`
         <div class="corazon">🔐</div>
         <h1>El último secreto</h1>
 
@@ -626,7 +630,7 @@ function capitulo04() {
         <button onclick="abrirCarta04()">
             Abrir el último regalo ♡
         </button>
-    `;
+  `);
 }
 
 function abrirCarta04() {
