@@ -403,16 +403,49 @@ function finalPregunta() {
 
         </div>
 
-        <button onclick="alert('El próximo nivel está por venir ♡')">
-
-            Continuar
-
-        </button>
+<button onclick="menuNiveles()">
+    Explorar nuestros recuerdos ♡
+</button>
 
     `;
 
 }
+function menuNiveles() {
+    document.querySelector(".contenedor").innerHTML = `
+        <div class="corazon">🌙</div>
 
+        <h1>Nuestro universo</h1>
+
+        <div class="subtitulo">
+            Cada recuerdo guarda una parte
+            de nuestra historia.
+            <br><br>
+            ¿Qué capítulo querés descubrir?
+        </div>
+
+        <div class="opciones">
+            <button onclick="pregunta1()">
+                ♡ 01 — El comienzo
+            </button>
+
+            <button onclick="alert('Este recuerdo todavía está bloqueado ♡')">
+                🔒 02 — Nuestra apuesta
+            </button>
+
+            <button onclick="alert('Este recuerdo todavía está bloqueado ♡')">
+                🔒 03 — Siete meses
+            </button>
+
+            <button onclick="alert('La sorpresa final todavía está bloqueada ♡')">
+                🔒 04 — Una carta para vos
+            </button>
+        </div>
+
+        <div class="pequeno">
+            Maggie × Rulings · Una historia nuestra
+        </div>
+    `;
+}
 </script>
 
 </body>
