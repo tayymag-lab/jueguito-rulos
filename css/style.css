@@ -541,3 +541,141 @@ button:disabled {
         opacity: 1;
     }
 }
+
+/* ==================================
+   NOVELA VISUAL — ESTILOS
+================================== */
+
+.novela-visual {
+    width: 100%;
+    text-align: center;
+    animation: novelaAparecer 0.6s ease;
+}
+
+.novela-capitulo {
+    color: #dca5bd;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+}
+
+.novela-escenario {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    width: 100%;
+    height: 240px;
+    margin-bottom: 15px;
+
+    border-radius: 20px;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            ellipse at bottom,
+            #793b5b77,
+            transparent 70%
+        ),
+        linear-gradient(
+            180deg,
+            #211426,
+            #3d2035
+        );
+
+    border: 1px solid #e6abc544;
+}
+
+.novela-personaje {
+    width: 170px;
+    max-width: 80%;
+    height: 215px;
+    object-fit: contain;
+    object-position: bottom;
+    image-rendering: pixelated;
+
+    animation: novelaPersonaje 0.5s ease;
+}
+
+.novela-simbolo {
+    font-size: 65px;
+    color: #f7b9d3;
+    margin: auto;
+}
+
+.novela-dialogo {
+    min-height: 130px;
+    padding: 18px;
+    margin-bottom: 15px;
+
+    border-radius: 15px;
+    text-align: left;
+
+    background: #2a1928;
+    border: 1px solid #e6abc555;
+}
+
+.novela-nombre {
+    display: inline-block;
+    padding: 5px 13px;
+    margin-bottom: 10px;
+
+    border-radius: 20px;
+    background: #6c3554;
+    color: #ffe0ed;
+
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.novela-dialogo p {
+    margin: 0;
+    color: #f7e2ec;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.novela-progreso {
+    margin-top: 13px;
+    font-size: 11px;
+    color: #dca5bd;
+    letter-spacing: 2px;
+}
+
+@keyframes novelaAparecer {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes novelaPersonaje {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 380px) {
+    .novela-escenario {
+        height: 200px;
+    }
+
+    .novela-personaje {
+        height: 180px;
+    }
+
+    .novela-dialogo {
+        min-height: 115px;
+        padding: 14px;
+    }
+}
