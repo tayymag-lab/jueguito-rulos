@@ -699,15 +699,18 @@ posiciones: [
             <div class="corazon">✨</div>
             <h1>Nuestra constelación</h1>
 
-            <div class="subtitulo">
-                Hay miles de estrellas en el cielo...
-                <br><br>
-                Pero algunas coincidencias
-                parecen escritas para nosotros.
-                <br><br>
-                Observá las estrellas que se iluminan
-                y repetí su secuencia.
-            </div>
+           <div class="subtitulo">
+    Hay millones de estrellas en el cielo...
+    <br><br>
+    Pero solamente algunas forman
+    nuestro pequeño universo.
+    <br><br>
+    Memorizá el orden en que brillan
+    y repetilo correctamente.
+    <br><br>
+    Ocho rondas te separan
+    de mi último regalo. ♡
+</div>
 
             <div class="constelacion">
                 <div class="constelacion-progreso"
