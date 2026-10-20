@@ -235,7 +235,15 @@ const ArcadeRulings = {
 
                 <div class="arcade-campo" id="arcade-campo">
                     <div class="arcade-jugador" id="arcade-jugador">
-                        <div class="arcade-avatar">🧑🏻‍🦱</div>
+                        
+<div class="arcade-avatar">
+    <img
+        src="img/personajes/rulings.png"
+        alt="Rulings"
+        class="sprite-rulings-arcade"
+    >
+</div>
+
                         <div class="arcade-canasta">🧺</div>
                     </div>
                 </div>
@@ -589,10 +597,18 @@ const LaberintoAmor = {
                     contenido = "💗";
                 }
 
-                if (this.x === x && this.y === y) {
-                    clase += " laberinto-jugador";
-                    contenido = "🧑🏻‍🦱";
-                }
+               
+if (this.x === x && this.y === y) {
+    clase += " laberinto-jugador";
+    contenido = `
+        <img
+            src="img/personajes/rulings.png"
+            alt="Rulings"
+            class="sprite-rulings-laberinto"
+        >
+    `;
+}
+
 
                 return `<div class="${clase}">${contenido}</div>`;
             }).join("")
