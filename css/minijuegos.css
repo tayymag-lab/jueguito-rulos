@@ -168,3 +168,73 @@
         font-size: 13px;
     }
 }
+
+
+/* MINIJUEGO 03 — LABERINTO */
+
+.laberinto {
+    margin-top: 20px;
+}
+
+.laberinto-tablero {
+    display: grid;
+    grid-template-columns: repeat(9, minmax(0, 1fr));
+    gap: 3px;
+    padding: 6px;
+    background: #281a28;
+    border: 1px solid #a85f7d;
+    border-radius: 12px;
+}
+
+.laberinto-celda {
+    aspect-ratio: 1;
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    background: #332d38;
+    font-size: clamp(12px, 3.5vw, 22px);
+}
+
+.laberinto-pared {
+    background: #69445a;
+}
+
+.laberinto-meta {
+    background: #6a3453;
+}
+
+.laberinto-jugador {
+    background: #9b5d7a;
+    box-shadow: 0 0 12px #d995ad88;
+}
+
+.laberinto-controles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin-top: 20px;
+}
+
+.laberinto-fila {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.laberinto-controles button {
+    width: 65px;
+    height: 55px;
+    padding: 0;
+    margin: 0;
+    font-size: 22px;
+    touch-action: manipulation;
+}
+
+.laberinto-estado {
+    margin-top: 15px;
+    font-size: 13px;
+    color: #e8b7c8;
+}
