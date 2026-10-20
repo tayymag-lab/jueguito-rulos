@@ -156,7 +156,9 @@ function menuNiveles() {
         </div>
 
         <div class="opciones">
-            ${boton(1, "El inicio", "pregunta1")}
+            
+${boton(1, "El inicio", "escenaAnioNuevo")}
+
             ${boton(2, "Nuestra apuesta", "capitulo02")}
             ${boton(3, "Primera cita", "capitulo03")}
             ${boton(4, "Un regalo para vos", "capitulo04")}
@@ -181,6 +183,54 @@ function desbloquearNivel(numero) {
     }
 }
 
+
+function escenaAnioNuevo() {
+
+    NovelaVisual.iniciar([
+
+        {
+            personaje: "Maggie",
+            texto: "31 de diciembre... Yo estaba de guardia y vos entrabas al día siguiente. Todavía no sabía que esa noche iba a cambiar tantas cosas."
+        },
+
+        {
+            personaje: "Lio",
+            texto: "Y pensar que todo empezó hablando de cualquier cosa..."
+        },
+
+        {
+            personaje: "Maggie",
+            texto: "Pokémon, League of Legends, Amino, anime... No sé cómo terminamos hablando de tantas boludeces, JAJA."
+        },
+
+        {
+            personaje: "Lio",
+            texto: "Bueno, pero al menos tuvimos una conversación interesante."
+        },
+
+        {
+            personaje: "Maggie",
+            texto: "Interesante fue cuando te dije mi nombre y aposté a que no te lo ibas a acordar."
+        },
+
+        {
+            personaje: "Lio",
+            texto: "¿Y qué apostamos?"
+        },
+
+        {
+            personaje: "Maggie",
+            texto: "Un McDonald's. Y, obviamente, yo tenía razón. ♡"
+        },
+
+        {
+            personaje: "Maggie",
+            texto: "Lo que no sabía era que esa apuesta iba a convertirse en uno de mis recuerdos favoritos."
+        }
+
+    ], pregunta1);
+
+}
 
 function pregunta1() {
 
