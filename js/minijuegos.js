@@ -1040,3 +1040,9 @@ ganar() {
         </div>
     `);
 },
+
+    salir() {
+        this.limpiar();
+        menuNiveles();
+    }
+};
