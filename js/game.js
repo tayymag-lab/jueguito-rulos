@@ -44,9 +44,9 @@ this.pantalla.classList.add("escena-visible");
 document.addEventListener("DOMContentLoaded", () => Juego.iniciar());
 
 
-/* ==================================
+/* =====================================
    NOVELA VISUAL — MAGGIE Y LIO
-================================== */
+===================================== */
 
 const NovelaVisual = {
 
@@ -54,14 +54,24 @@ const NovelaVisual = {
     posicion: 0,
     alTerminar: null,
 
+    temporizador: null,
+    escribiendo: false,
+    textoCompleto: "",
+    caracteres: 0,
+
     iniciar(escenas, alTerminar) {
+        this.detenerTexto();
+
         this.escenas = escenas;
         this.posicion = 0;
         this.alTerminar = alTerminar;
+
         this.mostrar();
     },
 
     mostrar() {
+        this.detenerTexto();
+
         if (this.posicion >= this.escenas.length) {
             const continuar = this.alTerminar;
             this.alTerminar = null;
@@ -69,17 +79,14 @@ const NovelaVisual = {
             if (typeof continuar === "function") {
                 continuar();
             }
+
             return;
         }
 
         const escena = this.escenas[this.posicion];
 
-        const personajes = {
-            "Maggie": "img/personajes/maggie.png",
-            "Lio": "img/personajes/rulings.png"
-        };
-
-        const imagen = personajes[escena.personaje];
+        const hablaMaggie = escena.personaje === "Maggie";
+        const hablaLio = escena.personaje === "Lio";
 
         Juego.mostrar(`
             <div class="novela-visual">
@@ -88,28 +95,55 @@ const NovelaVisual = {
                     ✦ UN RECUERDO NUESTRO ✦
                 </div>
 
-                <div class="novela-escenario">
-                    ${imagen ? `
+                <div class="novela-escenario novela-escenario-doble">
+
+                    <div class="novela-figura
+                        ${hablaMaggie ? "novela-activo" : "novela-inactivo"}">
+
                         <img
-                            src="${imagen}"
-                            alt="${escena.personaje}"
-                            class="novela-personaje"
+                            src="img/personajes/maggie.png"
+                            alt="Maggie"
                         >
-                    ` : `<div class="novela-simbolo">♡</div>`}
+
+                        <span>Maggie</span>
+                    </div>
+
+                    <div class="novela-corazon-centro">
+                        ♡
+                    </div>
+
+                    <div class="novela-figura
+                        ${hablaLio ? "novela-activo" : "novela-inactivo"}">
+
+                        <img
+                            src="img/personajes/rulings.png"
+                            alt="Lio"
+                        >
+
+                        <span>Lio</span>
+                    </div>
+
                 </div>
 
                 <div class="novela-dialogo">
+
                     <div class="novela-nombre">
                         ${escena.personaje}
                     </div>
 
-                    <p>${escena.texto}</p>
+                    <p id="novela-texto"></p>
+
+                    <div class="novela-indicador">
+                        ▼
+                    </div>
+
                 </div>
 
-                <button onclick="NovelaVisual.siguiente()">
-                    ${this.posicion === this.escenas.length - 1
-                        ? "Continuar ♡"
-                        : "Siguiente →"}
+                <button
+                    id="novela-boton"
+                    onclick="NovelaVisual.avanzar()"
+                >
+                    Continuar ♡
                 </button>
 
                 <div class="novela-progreso">
@@ -118,10 +152,94 @@ const NovelaVisual = {
 
             </div>
         `);
+
+        this.escribir(escena.texto);
+    },
+
+    escribir(texto) {
+        this.detenerTexto();
+
+        this.textoCompleto = texto;
+        this.caracteres = 0;
+        this.escribiendo = true;
+
+        const elemento = document.getElementById("novela-texto");
+        const boton = document.getElementById("novela-boton");
+
+        if (!elemento || !boton) return;
+
+        boton.textContent = "Mostrar todo ↓";
+
+        this.temporizador = setInterval(() => {
+
+            const textoElemento =
+                document.getElementById("novela-texto");
+
+            if (!textoElemento) {
+                this.detenerTexto();
+                return;
+            }
+
+            this.caracteres++;
+
+            textoElemento.textContent =
+                this.textoCompleto.slice(0, this.caracteres);
+
+            if (this.caracteres >= this.textoCompleto.length) {
+                this.detenerTexto();
+
+                const botonActual =
+                    document.getElementById("novela-boton");
+
+                if (botonActual) {
+                    botonActual.textContent =
+                        this.posicion === this.escenas.length - 1
+                            ? "Terminar escena ♡"
+                            : "Siguiente →";
+                }
+            }
+
+        }, 32);
+    },
+
+    detenerTexto() {
+        if (this.temporizador !== null) {
+            clearInterval(this.temporizador);
+            this.temporizador = null;
+        }
+
+        this.escribiendo = false;
+    },
+
+    completarTexto() {
+        this.detenerTexto();
+
+        const elemento = document.getElementById("novela-texto");
+        const boton = document.getElementById("novela-boton");
+
+        if (elemento) {
+            elemento.textContent = this.textoCompleto;
+        }
+
+        if (boton) {
+            boton.textContent =
+                this.posicion === this.escenas.length - 1
+                    ? "Terminar escena ♡"
+                    : "Siguiente →";
+        }
+    },
+
+    avanzar() {
+        if (this.escribiendo) {
+            this.completarTexto();
+            return;
+        }
+
+        this.posicion++;
+        this.mostrar();
     },
 
     siguiente() {
-        this.posicion++;
-        this.mostrar();
+        this.avanzar();
     }
 };
