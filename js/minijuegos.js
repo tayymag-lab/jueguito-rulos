@@ -831,21 +831,36 @@ posiciones: [
         ).join("");
     },
 
-    siguienteRonda() {
-        if (!this.activo || this.mostrando) return;
-        if (this.ronda >= this.maxRondas) return;
+   
+siguienteRonda() {
+    if (!this.activo || this.mostrando) return;
+    if (this.ronda >= this.maxRondas) return;
 
-        this.ronda++;
-        this.respuesta = 0;
+    this.ronda++;
+    this.respuesta = 0;
 
-        const nuevaEstrella =
-            Math.floor(Math.random() * this.posiciones.length);
+    // Las últimas rondas agregan dos estrellas.
+    const cantidadNueva = this.ronda >= 6 ? 2 : 1;
+
+    for (let i = 0; i < cantidadNueva; i++) {
+        let nuevaEstrella;
+
+        do {
+            nuevaEstrella = Math.floor(
+                Math.random() * this.posiciones.length
+            );
+        } while (
+            nuevaEstrella ===
+            this.secuencia[this.secuencia.length - 1]
+        );
 
         this.secuencia.push(nuevaEstrella);
+    }
 
-        this.actualizarProgreso();
-        this.mostrarSecuencia();
-    },
+    this.actualizarProgreso();
+    this.mostrarSecuencia();
+},
+
 
     mostrarSecuencia() {
         if (!this.activo) return;
@@ -861,11 +876,11 @@ posiciones: [
             " · ¡Memorizá las estrellas!"
         );
 
-        const intervalo = 850;
+        const intervalo = Math.max(470, 850 - this.ronda * 45);
 
         this.secuencia.forEach((indice, i) => {
             this.programar(() => {
-                this.iluminar(indice, 500);
+                this.iluminar(indice, Math.min(380, intervalo - 100));
             }, 700 + i * intervalo);
         });
 
