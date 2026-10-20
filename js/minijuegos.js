@@ -1,4 +1,182 @@
 
+/* MINIJUEGO 01 — MEMORIAS DE NOSOTROS */
+
+const MemoriaNosotros = {
+    cartas: [],
+    seleccionadas: [],
+    encontradas: 0,
+    movimientos: 0,
+    bloqueado: false,
+    espera: null,
+
+    iniciar() {
+        this.limpiar();
+
+        const simbolos = ["🌙", "🍔", "💗", "🎮", "🌿", "⭐"];
+
+        this.cartas = [...simbolos, ...simbolos];
+
+        for (let i = this.cartas.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [this.cartas[i], this.cartas[j]] =
+                [this.cartas[j], this.cartas[i]];
+        }
+
+        this.seleccionadas = [];
+        this.encontradas = 0;
+        this.movimientos = 0;
+        this.bloqueado = false;
+
+        Juego.mostrar(`
+            <div class="corazon">🎴</div>
+            <h1>Memorias de nosotros</h1>
+
+            <div class="subtitulo">
+                Cada recuerdo tiene su pareja.
+                <br>
+                ¿Podés encontrarlas todas?
+            </div>
+
+            <div class="memoria-estado" id="memoria-estado">
+                Parejas: 0/6 · Movimientos: 0
+            </div>
+
+            <div class="memoria-tablero">
+                ${this.cartas.map((_, i) => `
+                    <button
+                        class="memoria-carta"
+                        id="memoria-${i}"
+                        onclick="MemoriaNosotros.voltear(${i})"
+                        aria-label="Carta ${i + 1}, boca abajo"
+                    >♡</button>
+                `).join("")}
+            </div>
+
+            <button onclick="MemoriaNosotros.iniciar()">
+                Mezclar de nuevo ♡
+            </button>
+
+            <button onclick="MemoriaNosotros.salir()">
+                Volver al menú
+            </button>
+        `);
+    },
+
+    voltear(indice) {
+        if (this.bloqueado) return;
+
+        const carta = document.getElementById("memoria-" + indice);
+        if (!carta || carta.disabled ||
+            this.seleccionadas.includes(indice)) return;
+
+        carta.textContent = this.cartas[indice];
+        carta.classList.add("abierta");
+        carta.setAttribute("aria-label",
+            "Carta " + (indice + 1) + ": " + this.cartas[indice]);
+
+        this.seleccionadas.push(indice);
+
+        if (this.seleccionadas.length !== 2) return;
+
+        this.movimientos++;
+        this.bloqueado = true;
+
+        const [a, b] = this.seleccionadas;
+
+        if (this.cartas[a] === this.cartas[b]) {
+            document.getElementById("memoria-" + a)
+                .classList.add("encontrada");
+            document.getElementById("memoria-" + b)
+                .classList.add("encontrada");
+
+            document.getElementById("memoria-" + a).disabled = true;
+            document.getElementById("memoria-" + b).disabled = true;
+
+            this.encontradas++;
+            this.seleccionadas = [];
+            this.bloqueado = false;
+
+            this.actualizarEstado();
+
+            if (this.encontradas === 6) {
+                this.ganar();
+            }
+        } else {
+            this.actualizarEstado();
+
+            this.espera = setTimeout(() => {
+                [a, b].forEach(i => {
+                    const elemento =
+                        document.getElementById("memoria-" + i);
+
+                    if (elemento) {
+                        elemento.textContent = "♡";
+                        elemento.classList.remove("abierta");
+                        elemento.setAttribute(
+                            "aria-label",
+                            "Carta " + (i + 1) + ", boca abajo"
+                        );
+                    }
+                });
+
+                this.seleccionadas = [];
+                this.bloqueado = false;
+                this.espera = null;
+            }, 850);
+        }
+    },
+
+    actualizarEstado() {
+        const estado = document.getElementById("memoria-estado");
+
+        if (estado) {
+            estado.textContent =
+                `Parejas: ${this.encontradas}/6 · ` +
+                `Movimientos: ${this.movimientos}`;
+        }
+    },
+
+    limpiar() {
+        if (this.espera !== null) {
+            clearTimeout(this.espera);
+            this.espera = null;
+        }
+    },
+
+    salir() {
+        this.limpiar();
+        menuNiveles();
+    },
+
+    ganar() {
+        this.limpiar();
+        Juego.celebrar();
+
+        Juego.mostrar(`
+            <div class="corazon">🏆</div>
+            <h1>¡Memoria perfecta!</h1>
+
+            <div class="subtitulo">
+                Encontraste nuestros seis recuerdos.
+                <br><br>
+                Terminaste en ${this.movimientos} movimientos.
+                <br><br>
+                Parece que alguien sí tiene
+                buena memoria por acá...
+                <br><br>
+                No como cierta persona
+                que se olvidó de mi nombre.
+                JAJAJA. ♡
+            </div>
+
+            <button onclick="finalPregunta()">
+                Reclamar recompensa ♡
+            </button>
+        `);
+    }
+};
+
+
 /* MINIJUEGO 02 — LA DEUDA DE RULINGS */
 
 const ArcadeRulings = {
