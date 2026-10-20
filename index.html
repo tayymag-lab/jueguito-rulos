@@ -228,7 +228,109 @@ function escenaAnioNuevo() {
             texto: "Lo que no sabía era que esa apuesta iba a convertirse en uno de mis recuerdos favoritos."
         }
 
-    ], pregunta1);
+], decisionAnioNuevo);
+
+/* PRIMERA DECISIÓN ROMÁNTICA */
+
+function decisionAnioNuevo() {
+
+    Juego.mostrar(`
+        <div class="novela-visual">
+
+            <div class="novela-capitulo">
+                ✦ UNA PEQUEÑA DECISIÓN ✦
+            </div>
+
+            <div class="novela-escenario novela-escenario-doble">
+
+                <div class="novela-figura novela-activo">
+                    <img src="img/personajes/maggie.png" alt="Maggie">
+                    <span>Maggie</span>
+                </div>
+
+                <div class="novela-corazon-centro">♡</div>
+
+                <div class="novela-figura novela-inactivo">
+                    <img src="img/personajes/rulings.png" alt="Lio">
+                    <span>Lio</span>
+                </div>
+
+            </div>
+
+            <div class="novela-dialogo">
+                <div class="novela-nombre">Maggie</div>
+                <p>
+                    Y decime, Lio... ¿qué pensaste cuando
+                    te dije que no ibas a acordarte de mi nombre?
+                </p>
+            </div>
+
+            <div class="opciones">
+                <button onclick="respuestaAnioNuevo(1)">
+                    Que eras bastante atrevida.
+                </button>
+
+                <button onclick="respuestaAnioNuevo(2)">
+                    Que tenía que ganar esa apuesta.
+                </button>
+
+                <button onclick="respuestaAnioNuevo(3)">
+                    Que quería seguir hablando con vos.
+                </button>
+            </div>
+
+        </div>
+    `);
+}
+
+
+/* REACCIONES DE MAGGIE */
+
+function respuestaAnioNuevo(opcion) {
+
+    const reacciones = {
+
+        1: [
+            {
+                personaje: "Lio",
+                texto: "Que eras bastante atrevida."
+            },
+            {
+                personaje: "Maggie",
+                texto: "JAJAJA, ¿atrevida yo? Y eso que todavía ni me conocías bien."
+            }
+        ],
+
+        2: [
+            {
+                personaje: "Lio",
+                texto: "Que tenía que ganar esa apuesta."
+            },
+            {
+                personaje: "Maggie",
+                texto: "Bueno, claramente no salió como esperabas. Pero gracias por el McDonald's."
+            }
+        ],
+
+        3: [
+            {
+                personaje: "Lio",
+                texto: "Que quería seguir hablando con vos."
+            },
+            {
+                personaje: "Maggie",
+                texto: "Ay... esa respuesta es demasiado linda. Menos mal que te olvidaste mi nombre, entonces. ♡"
+            }
+        ]
+
+    };
+
+    const dialogos = reacciones[opcion];
+
+    if (!dialogos) return;
+
+    NovelaVisual.iniciar(dialogos, pregunta1);
+}
 
 }
 
