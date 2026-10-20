@@ -42,3 +42,86 @@ this.pantalla.classList.add("escena-visible");
 };
 
 document.addEventListener("DOMContentLoaded", () => Juego.iniciar());
+
+
+/* ==================================
+   NOVELA VISUAL — MAGGIE Y LIO
+================================== */
+
+const NovelaVisual = {
+
+    escenas: [],
+    posicion: 0,
+    alTerminar: null,
+
+    iniciar(escenas, alTerminar) {
+        this.escenas = escenas;
+        this.posicion = 0;
+        this.alTerminar = alTerminar;
+        this.mostrar();
+    },
+
+    mostrar() {
+        if (this.posicion >= this.escenas.length) {
+            const continuar = this.alTerminar;
+            this.alTerminar = null;
+
+            if (typeof continuar === "function") {
+                continuar();
+            }
+            return;
+        }
+
+        const escena = this.escenas[this.posicion];
+
+        const personajes = {
+            "Maggie": "img/personajes/maggie.png",
+            "Lio": "img/personajes/rulings.png"
+        };
+
+        const imagen = personajes[escena.personaje];
+
+        Juego.mostrar(`
+            <div class="novela-visual">
+
+                <div class="novela-capitulo">
+                    ✦ UN RECUERDO NUESTRO ✦
+                </div>
+
+                <div class="novela-escenario">
+                    ${imagen ? `
+                        <img
+                            src="${imagen}"
+                            alt="${escena.personaje}"
+                            class="novela-personaje"
+                        >
+                    ` : `<div class="novela-simbolo">♡</div>`}
+                </div>
+
+                <div class="novela-dialogo">
+                    <div class="novela-nombre">
+                        ${escena.personaje}
+                    </div>
+
+                    <p>${escena.texto}</p>
+                </div>
+
+                <button onclick="NovelaVisual.siguiente()">
+                    ${this.posicion === this.escenas.length - 1
+                        ? "Continuar ♡"
+                        : "Siguiente →"}
+                </button>
+
+                <div class="novela-progreso">
+                    ${this.posicion + 1} / ${this.escenas.length}
+                </div>
+
+            </div>
+        `);
+    },
+
+    siguiente() {
+        this.posicion++;
+        this.mostrar();
+    }
+};
