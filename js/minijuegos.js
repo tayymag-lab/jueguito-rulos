@@ -663,19 +663,29 @@ const ConstelacionAmor = {
     secuencia: [],
     respuesta: 0,
     ronda: 0,
-    maxRondas: 4,
+    maxRondas: 8,
     mostrando: false,
     activo: false,
     temporizadores: [],
     generacion: 0,
 
-    posiciones: [
-        [50, 16],
-        [20, 38],
-        [80, 38],
-        [32, 75],
-        [68, 75]
-    ],
+    
+posiciones: [
+    [50, 22],
+    [39, 11],
+    [28, 12],
+    [18, 23],
+    [16, 39],
+    [22, 54],
+    [33, 68],
+    [50, 87],
+    [67, 68],
+    [78, 54],
+    [84, 39],
+    [82, 23],
+    [72, 12],
+    [61, 11]
+],
 
     iniciar() {
         this.limpiar();
