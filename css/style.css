@@ -305,3 +305,239 @@ button:disabled {
         animation-duration: 0.01ms !important;
     }
 }
+
+
+/* =====================================
+   PORTADA ANIMADA — MAGGIE Y RULINGS
+===================================== */
+
+.portada {
+    width: 100%;
+    text-align: center;
+    animation: portadaEntrada 1.2s ease both;
+}
+
+.portada-etiqueta {
+    color: #d995ad;
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-bottom: 14px;
+}
+
+.portada-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(46px, 12vw, 68px);
+    color: #ffe0ef;
+    margin: 0 0 12px;
+    text-shadow: 0 0 20px #d995ad55;
+}
+
+.portada-subtitulo {
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 22px;
+}
+
+.portada-escena {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 8px;
+
+    width: 100%;
+    max-width: 360px;
+    min-height: 220px;
+    margin: 0 auto 25px;
+    padding: 18px 10px 12px;
+
+    border-radius: 20px;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 85%,
+            #70385066,
+            transparent 75%
+        ),
+        linear-gradient(
+            180deg,
+            #2c1829,
+            #1c101c
+        );
+
+    border: 1px solid #d995ad33;
+    overflow: hidden;
+}
+
+.portada-personaje {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+
+    width: 42%;
+    max-width: 140px;
+}
+
+.portada-personaje img {
+    display: block;
+    width: 100%;
+    height: 165px;
+    object-fit: contain;
+    image-rendering: pixelated;
+
+    filter: drop-shadow(0 5px 8px #00000066);
+}
+
+.portada-personaje span {
+    color: #f6c9dc;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-top: 7px;
+}
+
+.portada-rulings {
+    animation: portadaRulings 1.4s ease both;
+}
+
+.portada-maggie {
+    animation: portadaMaggie 1.4s ease both;
+}
+
+.portada-centro {
+    position: absolute;
+    left: 50%;
+    top: 42%;
+    z-index: 3;
+    transform: translate(-50%, -50%);
+
+    color: #ffd2e6;
+    font-size: 30px;
+    text-shadow: 0 0 15px #ff9fc8;
+
+    animation: portadaLatido 2s ease-in-out infinite;
+}
+
+.portada-corazon {
+    position: absolute;
+    z-index: 1;
+    color: #f5abc9;
+    opacity: 0;
+    pointer-events: none;
+    animation: portadaFlotar 4s ease-in-out infinite;
+}
+
+.corazon-uno {
+    left: 15%;
+    bottom: 20%;
+    font-size: 20px;
+    animation-delay: 0s;
+}
+
+.corazon-dos {
+    left: 51%;
+    bottom: 35%;
+    font-size: 13px;
+    animation-delay: 1.3s;
+}
+
+.corazon-tres {
+    right: 13%;
+    bottom: 15%;
+    font-size: 24px;
+    animation-delay: 2.4s;
+}
+
+.portada-pie {
+    margin-top: 18px;
+    opacity: 0.65;
+}
+
+/* ANIMACIONES */
+
+@keyframes portadaEntrada {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes portadaRulings {
+    from {
+        opacity: 0;
+        transform: translateX(-35px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes portadaMaggie {
+    from {
+        opacity: 0;
+        transform: translateX(35px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes portadaLatido {
+    0%, 100% {
+        opacity: 0.7;
+        scale: 1;
+    }
+    50% {
+        opacity: 1;
+        scale: 1.2;
+    }
+}
+
+@keyframes portadaFlotar {
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    35% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-85px);
+    }
+}
+
+@media (max-width: 380px) {
+    .portada-escena {
+        min-height: 200px;
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+
+    .portada-personaje img {
+        height: 145px;
+    }
+
+    .portada-subtitulo {
+        font-size: 14px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .portada,
+    .portada-rulings,
+    .portada-maggie,
+    .portada-centro,
+    .portada-corazon {
+        animation: none;
+        opacity: 1;
+    }
+}
