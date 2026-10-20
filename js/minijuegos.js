@@ -951,39 +951,92 @@ siguienteRonda() {
         });
     },
 
-    ganar() {
-        this.limpiar();
-        Juego.celebrar();
+    
+ganar() {
+    this.limpiar();
 
-        Juego.mostrar(`
-            <div class="corazon">💗</div>
-            <h1>Escrito en las estrellas</h1>
+    const estrellas = this.posiciones.map((pos, i) => `
+        <g class="final-estrella"
+           style="animation-delay:${0.4 + i * 0.19}s">
+            <circle
+                cx="${pos[0]}"
+                cy="${pos[1]}"
+                r="3.2"
+                class="final-resplandor"
+            />
+            <text
+                x="${pos[0]}"
+                y="${pos[1]}"
+                text-anchor="middle"
+                dominant-baseline="central"
+                class="final-simbolo"
+            >✦</text>
+        </g>
+    `).join("");
 
-            <div class="subtitulo">
-                ¡Completaste nuestra constelación!
-                <br><br>
+    const recorrido = [
+        ...this.posiciones,
+        this.posiciones[0]
+    ].map(pos => pos.join(",")).join(" ");
+
+    Juego.mostrar(`
+        <div class="final-cinematico">
+
+            <div class="final-etiqueta">
+                ✦ NUESTRO UNIVERSO ✦
+            </div>
+
+            <h1 class="final-titulo">
+                Escrito en las estrellas
+            </h1>
+
+            <div class="final-cielo">
+
+                <div class="final-brillo"></div>
+
+                <svg
+                    class="final-svg"
+                    viewBox="0 0 100 100"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-label="Constelación luminosa en forma de corazón"
+                    role="img"
+                >
+                    <polyline
+                        class="final-linea"
+                        points="${recorrido}"
+                        pathLength="100"
+                        fill="none"
+                    />
+
+                    ${estrellas}
+                </svg>
+
+            </div>
+
+            <div class="final-mensaje">
                 Entre millones de personas,
                 caminos y casualidades...
                 <br><br>
-                Qué suerte que nuestros caminos
-                se hayan cruzado.
+                <strong>
+                    Qué suerte haber coincidido con vos.
+                </strong>
                 <br><br>
-                Y si pudiera elegir otra vez,
-                me gustaría volver a encontrarte.
+                Y si pudiera elegir una vez más,
+                volvería a encontrarte.
+                <br><br>
                 ♡
-                <br><br>
-                Hay un último regalo
-                esperando por vos.
             </div>
 
-            <button onclick="abrirCarta04()">
-                💌 Abrir mi carta para vos
-            </button>
-        `);
-    },
+            <div class="final-recompensa">
+                <div class="pequeno">
+                    Hay un último regalo esperando por vos.
+                </div>
 
-    salir() {
-        this.limpiar();
-        menuNiveles();
-    }
-};
+                <button onclick="abrirCarta04()">
+                    💌 Abrir mi carta para vos
+                </button>
+            </div>
+
+        </div>
+    `);
+},
