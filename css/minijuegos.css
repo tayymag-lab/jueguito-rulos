@@ -389,3 +389,263 @@
         font-size: 18px;
     }
 }
+
+
+/* ===================================
+   FINAL CINEMATOGRÁFICO
+   NUESTRO UNIVERSO
+=================================== */
+
+.final-cinematico {
+    width: 100%;
+    text-align: center;
+    animation: finalEntrada 1.5s ease both;
+}
+
+.final-etiqueta {
+    color: #d995ad;
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-bottom: 18px;
+    animation: finalEntrada 2s ease both;
+}
+
+.final-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 8vw, 46px);
+    color: #fff0f4;
+    margin-bottom: 15px;
+    animation: finalEntrada 2s ease both;
+}
+
+.final-cielo {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    max-height: 370px;
+    margin: 0 auto 20px;
+    overflow: hidden;
+    border-radius: 18px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #43213f 0%,
+            #1c1023 65%,
+            #100915 100%
+        );
+}
+
+.final-cielo::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    background-image:
+        radial-gradient(#ffffff99 1px, transparent 2px),
+        radial-gradient(#e9a5c488 1px, transparent 2px);
+
+    background-size:
+        47px 59px,
+        73px 83px;
+
+    opacity: 0.5;
+    animation: finalFondo 5s ease-in-out infinite alternate;
+}
+
+.final-brillo {
+    position: absolute;
+    inset: 10%;
+    border-radius: 50%;
+    pointer-events: none;
+
+    background: radial-gradient(
+        circle,
+        #d995ad55,
+        transparent 70%
+    );
+
+    opacity: 0;
+    animation: finalBrillo 4s ease 3s forwards;
+}
+
+.final-svg {
+    position: relative;
+    z-index: 2;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+/* Estrellas que aparecen una por una */
+
+.final-estrella {
+    opacity: 0;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: finalEstrella 0.8s ease-out forwards;
+}
+
+.final-resplandor {
+    fill: #f4b9d4;
+    opacity: 0.25;
+}
+
+.final-simbolo {
+    fill: #ffe0ef;
+    font-size: 5px;
+    filter: drop-shadow(0 0 2px #f4b9d4);
+}
+
+/* Línea que dibuja el corazón */
+
+.final-linea {
+    stroke: #ffd0e7;
+    stroke-width: 0.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    filter: drop-shadow(0 0 2px #e99ec8);
+
+    animation:
+        finalDibujar 3s ease-in-out 3.2s forwards;
+}
+
+/* Mensaje romántico */
+
+.final-mensaje {
+    color: #f4dde5;
+    font-size: 15px;
+    line-height: 1.9;
+    padding: 0 8px;
+
+    opacity: 0;
+    animation: finalRevelar 2s ease 6s forwards;
+}
+
+.final-mensaje strong {
+    color: #ffd0e7;
+    font-weight: 700;
+}
+
+/* Botón final */
+
+.final-recompensa {
+    opacity: 0;
+    visibility: hidden;
+    animation: finalRecompensa 1.5s ease 8s forwards;
+}
+
+.final-recompensa button {
+    margin-top: 18px;
+    border-color: #f4b9d4;
+    box-shadow: 0 0 18px #d995ad44;
+}
+
+/* ANIMACIONES */
+
+@keyframes finalEntrada {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes finalEstrella {
+    0% {
+        opacity: 0;
+        transform: scale(0.1);
+    }
+    70% {
+        opacity: 1;
+        transform: scale(1.4);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes finalDibujar {
+    from {
+        stroke-dashoffset: 100;
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes finalBrillo {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes finalRevelar {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes finalRecompensa {
+    from {
+        opacity: 0;
+        visibility: visible;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+}
+
+@keyframes finalFondo {
+    from {
+        opacity: 0.3;
+    }
+    to {
+        opacity: 0.8;
+    }
+}
+
+/* Ajustes para celular */
+
+@media (max-width: 400px) {
+    .final-mensaje {
+        font-size: 14px;
+    }
+}
+
+/* Accesibilidad */
+
+@media (prefers-reduced-motion: reduce) {
+    .final-cinematico,
+    .final-etiqueta,
+    .final-titulo,
+    .final-estrella,
+    .final-linea,
+    .final-brillo,
+    .final-mensaje,
+    .final-recompensa {
+        animation-duration: 0.01ms !important;
+        animation-delay: 0ms !important;
+    }
+}
