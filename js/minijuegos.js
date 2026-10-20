@@ -28,8 +28,8 @@ const MemoriaNosotros = {
         this.bloqueado = false;
 
         Juego.mostrar(`
-            <div class="corazon">🎴</div>
-            <h1>Memorias de nosotros</h1>
+            <div class="corazon">🃏</div>
+            <h1>Recuerdos mezclados</h1>
 
             <div class="subtitulo">
                 Cada recuerdo tiene su pareja.
@@ -53,7 +53,7 @@ const MemoriaNosotros = {
             </div>
 
             <button onclick="MemoriaNosotros.iniciar()">
-                Mezclar de nuevo ♡
+                Mezclar de nuevo
             </button>
 
             <button onclick="MemoriaNosotros.salir()">
@@ -157,27 +157,22 @@ const MemoriaNosotros = {
             <h1>¡Memoria perfecta!</h1>
 
             <div class="subtitulo">
-                Encontraste nuestros seis recuerdos.
+               Encontrasten los seis recuerdos.
                 <br><br>
                 Terminaste en ${this.movimientos} movimientos.
                 <br><br>
                 Parece que alguien sí tiene
-                buena memoria por acá...
-                <br><br>
-                No como cierta persona
-                que se olvidó de mi nombre.
-                JAJAJA. ♡
-            </div>
+                buena memoria por acá...             </div>
 
             <button onclick="finalPregunta()">
-                Reclamar recompensa ♡
+                ✨ Reclamar recompensa ✨
             </button>
         `);
     }
 };
 
 
-/* MINIJUEGO 02 — LA DEUDA DE RULINGS */
+/* MINIJUEGO 02 — LA DEUDA DE RULOS */
 
 const ArcadeRulings = {
     activo: false,
@@ -207,7 +202,7 @@ const ArcadeRulings = {
 
         Juego.mostrar(`
             <div class="corazon">🍔</div>
-            <h1>La deuda de Rulings</h1>
+            <h1>La deuda de Rulos</h1>
 
             <div class="subtitulo">
                 ¡Tenés 45 segundos para conseguir
@@ -244,7 +239,7 @@ const ArcadeRulings = {
     >
 </div>
 
-                        <div class="arcade-canasta">🧺</div>
+                        <div class="arcade-canasta"></div>
                     </div>
                 </div>
 
@@ -253,7 +248,7 @@ const ArcadeRulings = {
                 </div>
 
                 <div class="arcade-ayuda">
-                    Deslizá el dedo para mover a Rulings ♡
+                    Deslizá el dedo para mover a Lio
                 </div>
 
                 <button onclick="ArcadeRulings.detener(); prueba02()">
@@ -474,13 +469,13 @@ const ArcadeRulings = {
                 </div>
 
                 <button onclick="final02()">
-                    Reclamar recompensa ♡
+                    Reclamar recompensa 
                 </button>
             `);
         } else {
             Juego.mostrar(`
                 <div class="corazon">😭</div>
-                <h1>¡Otra vez, Rulings!</h1>
+                <h1>¡Otra vez, Rulitos!</h1>
 
                 <div class="subtitulo">
                     Conseguir el almuerzo
@@ -510,11 +505,11 @@ const LaberintoAmor = {
         "#########",
         "#S..#...#",
         "#.#.#.#.#",
-        "#.#...#.#",
+        "#.....#.#",
         "#.###.#.#",
         "#...#...#",
-        "###.#.###",
-        "#.....E.#",
+        "#####.#.#",
+        "#......E#",
         "#########"
     ],
 
@@ -531,13 +526,13 @@ const LaberintoAmor = {
 
         Juego.mostrar(`
             <div class="corazon">🌿</div>
-            <h1>El camino hacia vos</h1>
+            <h1>En busca del camino</h1>
 
             <div class="subtitulo">
                 Hay recuerdos que vale la pena encontrar.
                 <br><br>
-                Guiá a Rulings por el laberinto
-                hasta llegar al corazón.
+                Guiá a Lio por el laberinto
+                hasta llegar a Maggie.
             </div>
 
             <div class="laberinto">
@@ -589,7 +584,7 @@ const LaberintoAmor = {
 
                 if (celda === "#") {
                     clase += " laberinto-pared";
-                    contenido = "🌿";
+                    contenido = "🍁";
                 }
 
                 if (celda === "E") {
@@ -650,12 +645,12 @@ if (this.x === x && this.y === y) {
         Juego.celebrar();
 
         Juego.mostrar(`
-            <div class="corazon">💗</div>
+            <div class="corazon">🎊</div>
             <h1>¡Encontraste el camino!</h1>
 
             <div class="subtitulo">
                 Después de ${this.pasos} pasos,
-                llegaste al corazón.
+                llegaste a Maggie.
                 <br><br>
                 Como aquella vez en la
                 Reserva Ecológica de Palermo.
@@ -666,7 +661,7 @@ if (this.x === x && this.y === y) {
             </div>
 
             <button onclick="final03()">
-                Desbloquear el siguiente recuerdo ♡
+                Desbloquear el siguiente recuerdo 
             </button>
         `);
     }
@@ -717,8 +712,7 @@ posiciones: [
 
            <div class="subtitulo">
     Hay millones de estrellas en el cielo...
-    <br><br>
-    Pero solamente algunas forman
+    Pero solamente algunas forman parte de
     nuestro pequeño universo.
     <br><br>
     Memorizá el orden en que brillan
@@ -755,7 +749,7 @@ posiciones: [
 
                 <button id="constelacion-accion"
                         onclick="ConstelacionAmor.siguienteRonda()">
-                    Comenzar desafío ♡
+                    ¡Comenzar desafío! 
                 </button>
 
                 <button onclick="ConstelacionAmor.salir()">
@@ -906,7 +900,7 @@ siguienteRonda() {
         this.programar(() => {
             this.mostrando = false;
             this.habilitarEstrellas(true);
-            this.mensaje("¡Tu turno! Repetí la secuencia ♡");
+            this.mensaje("¡Tu turno! Repetí la secuencia");
         }, 700 + this.secuencia.length * intervalo);
     },
 
@@ -1034,7 +1028,7 @@ ganar() {
                 caminos y casualidades...
                 <br><br>
                 <strong>
-                    Qué suerte haber coincidido con vos.
+                    Tengo suerte de haber coincidido con vos.
                 </strong>
                 <br><br>
                 Y si pudiera elegir una vez más,
@@ -1045,11 +1039,10 @@ ganar() {
 
             <div class="final-recompensa">
                 <div class="pequeno">
-                    Hay un último regalo esperando por vos.
-                </div>
+                    Hay un último regalo esperando por vos...                 </div>
 
                 <button onclick="abrirCarta04()">
-                    💌 Abrir mi carta para vos
+                    💌 Abrir carta 
                 </button>
             </div>
 
