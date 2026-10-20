@@ -238,3 +238,118 @@
     font-size: 13px;
     color: #e8b7c8;
 }
+
+
+/* MINIJUEGO 04 — NUESTRA CONSTELACIÓN */
+
+.constelacion {
+    margin-top: 22px;
+}
+
+.constelacion-cielo {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    border: 1px solid #a85f7d;
+    border-radius: 18px;
+
+    background:
+        radial-gradient(circle at 50% 45%, #58314f, transparent 65%),
+        linear-gradient(160deg, #231323, #100a17);
+}
+
+.constelacion-cielo::before {
+    content: "·  ✧     ·     ✦     ·  ✧     ·";
+    position: absolute;
+    top: 12px;
+    left: 0;
+    width: 100%;
+    color: #c69ab9;
+    opacity: 0.45;
+    pointer-events: none;
+}
+
+.constelacion-estrella {
+    position: absolute;
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    margin: 0;
+
+    transform: translate(-50%, -50%);
+    border: 1px solid #a779a1;
+    border-radius: 50%;
+
+    background: #543451;
+    color: #f6d9ed;
+    font-size: 27px;
+
+    box-shadow: 0 0 12px #b579b555;
+    transition:
+        background 0.2s,
+        box-shadow 0.2s,
+        border-color 0.2s;
+}
+
+.constelacion-estrella:hover {
+    transform: translate(-50%, -50%);
+}
+
+.constelacion-estrella:active {
+    transform: translate(-50%, -50%) scale(0.95);
+}
+
+.constelacion-estrella.iluminada {
+    background: #f4c0d9;
+    color: #622c4d;
+    border-color: #fff0f4;
+
+    box-shadow:
+        0 0 20px #f4c0d9,
+        0 0 42px #e99ec8;
+}
+
+.constelacion-estrella:disabled {
+    opacity: 1;
+    cursor: default;
+}
+
+.constelacion-estado {
+    margin: 18px 0;
+    color: #f4dde5;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.constelacion-progreso {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.constelacion-punto {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #503044;
+    border: 1px solid #a779a1;
+}
+
+.constelacion-punto.completo {
+    background: #f4c0d9;
+    box-shadow: 0 0 10px #e99ec8;
+}
+
+@media (max-width: 400px) {
+    .constelacion-cielo {
+        height: 270px;
+    }
+
+    .constelacion-estrella {
+        width: 46px;
+        height: 46px;
+        font-size: 24px;
+    }
+}
