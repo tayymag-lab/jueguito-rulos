@@ -379,7 +379,7 @@ Juego.celebrar();
 
 function capitulo02() {
    Juego.mostrar(`
-        <div class="corazon">🎮</div>
+        <div class="corazon">🥂</div>
         <h1>La apuesta</h1>
 
         <div class="subtitulo">
@@ -401,7 +401,7 @@ function capitulo02() {
 
 function apuesta02() {
     document.querySelector(".contenedor").innerHTML = `
-        <div class="corazon">🍟</div>
+        <div class="corazon">🍨</div>
         <h1>El trato</h1>
 
         <div class="subtitulo">
@@ -409,15 +409,15 @@ function apuesta02() {
             solte una apuesta:
             <br><br>
             <em>«Mañana ni te vas a acordar
-            mi nombre».</em>
+            mi nombre»</em>
             <br><br>
             Y vos, orgulloso, aceptaste esa apuesta... 
-            El premio sería un McDonald's.
+            y acordamos que el premio sería un McDonald's.
             <br><br>
             Y así, quedó sellado ese trato.
         </div>
 
-        <button onclick="prueba02()">Descubrir el resultado</button>
+        <button onclick="prueba02()">¿Y despues?</button>
     `;
 }
 
@@ -430,7 +430,7 @@ function prueba02() {
             Nos volvimos a ver y
             te pregunte mi nombre...
             <br><br>
-            Y llegó el momento de demostrar
+            Habia llegado el momento de demostrar
             que tenías una memoria impecable.
             <br><br>
             Bueno... impecable no tanto.
@@ -449,7 +449,7 @@ function prueba02() {
             </button>
 
             <button onclick="resultado02('C')">
-                No hay defensa posible...
+                No hay defensa posible...💔
             </button>
         </div>
     `;
@@ -461,9 +461,9 @@ function resultado02(opcion) {
     if (opcion === "A") {
         reaccion = "JAJAJA, tu memoria decidió tomarse el día libre. 😭";
     } else if (opcion === "B") {
-        reaccion = "¡Y menos mal! Porque Maggie no iba a dejar pasar esa apuesta. 🍟";
+        reaccion = "¡Y menos mal! Porque no iba a dejar pasar esa apuesta. 🍟";
     } else {
-        reaccion = "Por fin reconocés tus errores, señor Rulings. JAJAJA. ♡";
+        reaccion = "Por fin reconocés tus errores, señor Rulitos JAJAJA. 🤍";
     }
 
     document.querySelector(".contenedor").innerHTML = `
@@ -473,15 +473,16 @@ function resultado02(opcion) {
         <div class="subtitulo">
             ${reaccion}
             <br><br>
-            La apuesta estaba perdida:
+            La apuesta ya estaba condenada igual...
+<br><br>
             Maggie ganó y vos terminaste
             pagando el almuerzo.
             <br><br>
-            <strong>Un McDonald's para la ganadora.</strong>
+            <strong>¡Un McDonald's para la ganadora!</strong>
         </div>
 
        <button onclick="ArcadeRulings.iniciar()">
-    🎮 Jugar: La deuda de Rulings
+    🎮 Jugar: La deuda de Lio
 </button>
     `;
 }
@@ -500,16 +501,16 @@ Juego.celebrar();
             <br><br>
             Quién iba a imaginar que esa
             pequeña anécdota terminaría
-            siendo uno de nuestros recuerdos.
+            siendo el primer recuerdo.
             <br><br>
             <em>Me alegra que aquella apuesta
-            haya sido parte de nuestra historia.</em>
+            haya sido el inicio de nuestra historia.</em>
             <br><br>
-            Te quiero, Rulings. ♡
+            Te quiero, Rulitos. ♡
         </div>
 
         <button onclick="menuNiveles()">
-            Volver a nuestro universo 🌙
+            ¡Siguiente nivel!
         </button>
     `;
 }
@@ -517,15 +518,18 @@ Juego.celebrar();
 
 function capitulo03() {
    Juego.mostrar(`
-        <div class="corazon">🍔</div>
-        <h1>03 — Siete meses</h1>
+
+        <div class="corazon" >🌸</div>
+        <h1>Primera cita</h1>
         <div class="subtitulo">
-            Todo empezó con una apuesta...
+           MISIÓN 03 - CITA
+            <br><br>
+             Todo empezó con una apuesta...
             <br><br>
             Y una promesa que, por suerte,
             terminaste cumpliendo.
             <br><br>
-            ¿Te acordás de nuestro primer almuerzo?
+            ¿Te acordás de nuestra primera salida?
         </div>
         <button onclick="almuerzo03()">
             Recordarlo ♡
@@ -535,12 +539,12 @@ function capitulo03() {
 
 function almuerzo03() {
     document.querySelector(".contenedor").innerHTML = `
-        <div class="corazon">🍟</div>
+        <div class="corazon">🍁</div>
         <h1>Una cita inesperada</h1>
         <div class="subtitulo">
-            Lo que comenzó como una apuesta
+            Lo que comenzó como una apuesta, 
             terminó convirtiéndose en
-            nuestro primer almuerzo juntos.
+            nuestra primer merienda juntos.
             <br><br>
             Tal vez ninguno imaginaba
             lo importante que sería
@@ -560,18 +564,17 @@ function reserva03() {
         <div class="corazon">🌿</div>
         <h1>Un lugar especial</h1>
         <div class="subtitulo">
-            Después de aquel primer almuerzo,
-            hubo un lugar que terminó
+           Al final, ese lugar terminó
             siendo parte de nuestra historia.
             <br><br>
-            ¿Dónde fue nuestro primer beso?
+            ¿Dónde fue nuestra primer cita?
         </div>
         <div class="opciones">
             <button onclick="respuesta03(false)">
                 En una plaza
             </button>
             <button onclick="respuesta03(true)">
-                En la Reserva Ecológica de Palermo
+                En la Reserva Ecológica
             </button>
             <button onclick="respuesta03(false)">
                 En un restaurante
@@ -584,34 +587,34 @@ function respuesta03(correcta) {
     if (correcta) {
         document.querySelector(".contenedor").innerHTML = `
             <div class="corazon">💗</div>
-            <h1>¡Recuerdo desbloqueado!</h1>
+            <h1>Recuerdo desbloqueado</h1>
             <div class="subtitulo">
                 ¡Te acordaste! ♡
                 <br><br>
                 La Reserva Ecológica de Palermo.
                 <br><br>
-                El lugar donde nos dimos
-                nuestro primer beso.
+                El lugar donde nos vimos
+             y decidimos empezar toda nuestra historia
                 <br><br>
-                Uno de esos recuerdos
+                Uno de esos primeros recuerdos
                 que siempre voy a guardar.
             </div>
             <button onclick="LaberintoAmor.iniciar()">
-    🌿 Encontrar el camino ♡
+     Encontrar el camino 🌿
 </button>
         `;
     } else {
         document.querySelector(".contenedor").innerHTML = `
             <div class="corazon">😭</div>
-            <h1>¡Rulings!</h1>
+            <h1>¡CHUCHII!</h1>
             <div class="subtitulo">
                 ¿Otra vez problemas
                 con la memoria?
                 <br><br>
-                JAJAJA, no puede ser.
+                JAJAJA, no puede ser...
                 <br><br>
                 Te doy otra oportunidad,
-                pero esta vez pensalo bien. ♡
+                pero esta vez pensalo mejor.
             </div>
             <button onclick="reserva03()">
                 Intentar otra vez
@@ -624,12 +627,12 @@ function final03() {
   desbloquearNivel(4);
 Juego.celebrar();
     document.querySelector(".contenedor").innerHTML = `
-        <div class="corazon">♡</div>
+        <div class="corazon">🤍</div>
         <h1>Y acá estamos...</h1>
         <div class="subtitulo">
             Desde aquella apuesta,
-            aquel almuerzo y nuestro
-            primer beso...
+            aquel almuerzo y nuestra
+            primer salida...
             <br><br>
             Hasta todos los momentos
             que vinieron después.
@@ -644,7 +647,7 @@ Juego.celebrar();
             <em>Con amor, Maggie. ♡</em>
         </div>
         <button onclick="menuNiveles()">
-            Volver a nuestro universo 🌙
+          ¡Siguiente nivel! 
         </button>
     `;
 }
@@ -654,23 +657,25 @@ Juego.celebrar();
 function capitulo04() {
    Juego.mostrar(`
         <div class="corazon">🔐</div>
-        <h1>El último secreto</h1>
+        <h1>Nuevo secreto</h1>
 
         <div class="subtitulo">
-            Llegaste hasta acá...
+            MISIÓN 04 - FUTURO
             <br><br>
-            Después de recordar nuestra apuesta,
-            aquel almuerzo y nuestro primer beso,
-            todavía queda algo por descubrir.
+Y llegaste hasta acá...
+            <br><br>
+            Después de recordar nuestro inicio,
+           queda algo más por descubrir.
             <br><br>
             No es una pregunta.
+            <br><br>
             No hay respuestas correctas.
             <br><br>
-            Esta vez, solo quiero que leas.
+            Esta vez, solo quiero que disfrutes y leas... 
         </div>
 
         <button onclick="ConstelacionAmor.iniciar()">
-    ✨ Descubrir nuestra constelación
+    ✨ Descubri nuestra constelación ✨
 </button>
   `);
 }
@@ -678,31 +683,32 @@ function capitulo04() {
 function abrirCarta04() {
     document.querySelector(".contenedor").innerHTML = `
         <div class="corazon">💌</div>
-        <h1>Para vos, Rulings</h1>
+        <h1>Para vos, Erizito</h1>
 
         <div class="subtitulo">
             No sé en qué momento exacto
             empezaste a convertirte en alguien
             tan importante para mí.
             <br><br>
-            Quizás fue aquella noche
-            en la que hablamos de cualquier cosa.
-            O cuando te olvidaste de mi nombre
+            Desde un inicio llamaste mi atención
+           y quizás por eso fue más fácil quererte... Quizás fue esa noche
+            en la que hablamos de cualquier cosa, 
+            o cuando te olvidaste de mi nombre
             y terminaste debiéndome un almuerzo.
             <br><br>
-            Lo que sí sé es que me alegra
-            muchísimo haberte conocido.
+            Lo que sí sé, es que me alegra
+            muchísimo haberte conocido y que actualmente estes en mi vida.
             <br><br>
             Me gustan nuestros recuerdos,
             nuestras conversaciones y hasta
             esas pequeñas tonterías que
-            solamente nosotros entendemos.
+            solo nosotros entendemos.
             <br><br>
             Gracias por formar parte
-            de mi vida y por todos
-            los momentos que compartimos.
+            de mi vida, por quererme y por todos
+            los momentos que compartimos juntos.
             <br><br>
-            Y aunque este jueguito llegue
+            Y, aunque este jueguito llegue
             a su final, espero que nosotros
             sigamos escribiendo nuestra historia.
             <br><br>
@@ -718,14 +724,14 @@ function abrirCarta04() {
 function finalJuego() {
     document.querySelector(".contenedor").innerHTML = `
         <div class="corazon">💗</div>
-        <h1>Maggie & Rulings</h1>
+        <h1>LIO & MAGGIE</h1>
 
         <div class="subtitulo">
             Una apuesta.
             <br>
             Un almuerzo.
             <br>
-            Un primer beso.
+            Una cita.
             <br><br>
             Y una historia que
             todavía tiene mucho por contar.
