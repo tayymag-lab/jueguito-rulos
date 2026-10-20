@@ -144,7 +144,7 @@ function menuNiveles() {
     }
 
     document.querySelector(".contenedor").innerHTML = `
-        <div class="corazon">🌙</div>
+        <div class="corazon">💐</div>
         <h1>Nuestro universo</h1>
 
         <div class="subtitulo">
@@ -152,18 +152,18 @@ function menuNiveles() {
             de nuestra historia.
             <br><br>
             Completá los capítulos para
-            descubrir lo que viene después.
+            descubrir lo que viene después...
         </div>
 
         <div class="opciones">
-            ${boton(1, "El comienzo", "pregunta1")}
+            ${boton(1, "El inicio", "pregunta1")}
             ${boton(2, "Nuestra apuesta", "capitulo02")}
-            ${boton(3, "Siete meses", "capitulo03")}
-            ${boton(4, "Una carta para vos", "capitulo04")}
+            ${boton(3, "Primera cita", "capitulo03")}
+            ${boton(4, "Un regalo para vos", "capitulo04")}
         </div>
 
         <div class="pequeno">
-            Progreso: ${nivel} de 4 capítulos disponibles ♡
+            Progreso: ${nivel} de 4 capítulos disponibles 
         </div>
 
 <button onclick="reiniciarJuego()"
@@ -186,9 +186,9 @@ function pregunta1() {
 
     Juego.mostrar(`
 
-        <div class="corazon">💭</div>
+        <div class="disponible" >🌪<</div>
 
-        <h1>El comienzo</h1>
+        <h1>Esa noche</h1>
 
         <div class="subtitulo">
 
@@ -306,7 +306,7 @@ function pregunta2() {
 
         <div class="corazon">🌙</div>
 
-        <h1>01.02</h1>
+        <h1>.-------.</h1>
 
         <div class="subtitulo">
 
@@ -355,7 +355,7 @@ Juego.celebrar();
 
         <div class="corazon">💗</div>
 
-        <h1>Seguimos...</h1>
+        <h1>¡Seguimos!</h1>
 
         <div class="subtitulo">
 
@@ -370,7 +370,7 @@ Juego.celebrar();
         </div>
 
 <button onclick="menuNiveles()">
-    Continuar al menú ♡
+   Siguiente nivel
 </button>
 
     `;
