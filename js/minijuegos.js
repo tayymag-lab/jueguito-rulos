@@ -655,3 +655,307 @@ const LaberintoAmor = {
         `);
     }
 };
+
+
+/* MINIJUEGO 04 — ESCRITO EN LAS ESTRELLAS */
+
+const ConstelacionAmor = {
+    secuencia: [],
+    respuesta: 0,
+    ronda: 0,
+    maxRondas: 4,
+    mostrando: false,
+    activo: false,
+    temporizadores: [],
+    generacion: 0,
+
+    posiciones: [
+        [50, 16],
+        [20, 38],
+        [80, 38],
+        [32, 75],
+        [68, 75]
+    ],
+
+    iniciar() {
+        this.limpiar();
+
+        this.secuencia = [];
+        this.respuesta = 0;
+        this.ronda = 0;
+        this.activo = true;
+
+        Juego.mostrar(`
+            <div class="corazon">✨</div>
+            <h1>Nuestra constelación</h1>
+
+            <div class="subtitulo">
+                Hay miles de estrellas en el cielo...
+                <br><br>
+                Pero algunas coincidencias
+                parecen escritas para nosotros.
+                <br><br>
+                Observá las estrellas que se iluminan
+                y repetí su secuencia.
+            </div>
+
+            <div class="constelacion">
+                <div class="constelacion-progreso"
+                     id="constelacion-progreso"></div>
+
+                <div class="constelacion-cielo"
+                     id="constelacion-cielo">
+
+                    ${this.posiciones.map((pos, i) => `
+                        <button
+                            class="constelacion-estrella"
+                            id="estrella-${i}"
+                            style="left:${pos[0]}%;top:${pos[1]}%"
+                            onclick="ConstelacionAmor.tocar(${i})"
+                            aria-label="Estrella ${i + 1}"
+                            disabled
+                        >✦</button>
+                    `).join("")}
+
+                </div>
+
+                <div class="constelacion-estado"
+                     id="constelacion-estado">
+                    Preparando las estrellas...
+                </div>
+
+                <button id="constelacion-accion"
+                        onclick="ConstelacionAmor.siguienteRonda()">
+                    Comenzar desafío ♡
+                </button>
+
+                <button onclick="ConstelacionAmor.salir()">
+                    Volver al menú
+                </button>
+            </div>
+        `);
+
+        this.actualizarProgreso();
+    },
+
+    programar(funcion, retraso) {
+        const version = this.generacion;
+
+        const id = setTimeout(() => {
+            if (version !== this.generacion || !this.activo) {
+                return;
+            }
+
+            funcion();
+        }, retraso);
+
+        this.temporizadores.push(id);
+    },
+
+    limpiar() {
+        this.generacion++;
+
+        this.temporizadores.forEach(id => clearTimeout(id));
+        this.temporizadores = [];
+
+        this.activo = false;
+        this.mostrando = false;
+    },
+
+    mensaje(texto) {
+        const elemento =
+            document.getElementById("constelacion-estado");
+
+        if (elemento) elemento.textContent = texto;
+    },
+
+    boton(texto, visible, funcion) {
+        const boton =
+            document.getElementById("constelacion-accion");
+
+        if (!boton) return;
+
+        boton.textContent = texto;
+        boton.style.display = visible ? "block" : "none";
+
+        if (funcion) {
+            boton.onclick = funcion;
+        }
+    },
+
+    habilitarEstrellas(habilitar) {
+        this.posiciones.forEach((_, i) => {
+            const estrella =
+                document.getElementById("estrella-" + i);
+
+            if (estrella) estrella.disabled = !habilitar;
+        });
+    },
+
+    iluminar(indice, duracion = 500) {
+        const estrella =
+            document.getElementById("estrella-" + indice);
+
+        if (!estrella) return;
+
+        estrella.classList.add("iluminada");
+
+        this.programar(() => {
+            estrella.classList.remove("iluminada");
+        }, duracion);
+    },
+
+    actualizarProgreso() {
+        const progreso =
+            document.getElementById("constelacion-progreso");
+
+        if (!progreso) return;
+
+        progreso.innerHTML = Array.from(
+            { length: this.maxRondas },
+            (_, i) => `
+                <span class="constelacion-punto
+                    ${i < this.ronda - 1 ? "completo" : ""}">
+                </span>
+            `
+        ).join("");
+    },
+
+    siguienteRonda() {
+        if (!this.activo || this.mostrando) return;
+        if (this.ronda >= this.maxRondas) return;
+
+        this.ronda++;
+        this.respuesta = 0;
+
+        const nuevaEstrella =
+            Math.floor(Math.random() * this.posiciones.length);
+
+        this.secuencia.push(nuevaEstrella);
+
+        this.actualizarProgreso();
+        this.mostrarSecuencia();
+    },
+
+    mostrarSecuencia() {
+        if (!this.activo) return;
+
+        this.mostrando = true;
+        this.respuesta = 0;
+
+        this.habilitarEstrellas(false);
+        this.boton("", false);
+
+        this.mensaje(
+            "Ronda " + this.ronda + "/" + this.maxRondas +
+            " · ¡Memorizá las estrellas!"
+        );
+
+        const intervalo = 850;
+
+        this.secuencia.forEach((indice, i) => {
+            this.programar(() => {
+                this.iluminar(indice, 500);
+            }, 700 + i * intervalo);
+        });
+
+        this.programar(() => {
+            this.mostrando = false;
+            this.habilitarEstrellas(true);
+            this.mensaje("¡Tu turno! Repetí la secuencia ♡");
+        }, 700 + this.secuencia.length * intervalo);
+    },
+
+    tocar(indice) {
+        if (!this.activo || this.mostrando) return;
+
+        this.iluminar(indice, 250);
+
+        if (indice !== this.secuencia[this.respuesta]) {
+            this.error();
+            return;
+        }
+
+        this.respuesta++;
+
+        if (this.respuesta === this.secuencia.length) {
+            this.acierto();
+        } else {
+            this.mensaje(
+                "¡Bien! " + this.respuesta + "/" +
+                this.secuencia.length + " estrellas ♡"
+            );
+        }
+    },
+
+    error() {
+        this.mostrando = true;
+        this.habilitarEstrellas(false);
+
+        this.mensaje(
+            "¡Ups! Una estrella se escapó. " +
+            "Podés intentar esta ronda otra vez ♡"
+        );
+
+        this.boton("Volver a observar ✨", true, () => {
+            this.mostrarSecuencia();
+        });
+    },
+
+    acierto() {
+        this.mostrando = true;
+        this.habilitarEstrellas(false);
+
+        if (this.ronda >= this.maxRondas) {
+            this.ganar();
+            return;
+        }
+
+        this.mostrando = false;
+
+        this.mensaje(
+            "¡Perfecto! Completaste la ronda " +
+            this.ronda + " ♡"
+        );
+
+        this.boton("Siguiente constelación ✦", true, () => {
+            this.siguienteRonda();
+        });
+    },
+
+    ganar() {
+        this.limpiar();
+        Juego.celebrar();
+
+        Juego.mostrar(`
+            <div class="corazon">💗</div>
+            <h1>Escrito en las estrellas</h1>
+
+            <div class="subtitulo">
+                ¡Completaste nuestra constelación!
+                <br><br>
+                Entre millones de personas,
+                caminos y casualidades...
+                <br><br>
+                Qué suerte que nuestros caminos
+                se hayan cruzado.
+                <br><br>
+                Y si pudiera elegir otra vez,
+                me gustaría volver a encontrarte.
+                ♡
+                <br><br>
+                Hay un último regalo
+                esperando por vos.
+            </div>
+
+            <button onclick="abrirCarta04()">
+                💌 Abrir mi carta para vos
+            </button>
+        `);
+    },
+
+    salir() {
+        this.limpiar();
+        menuNiveles();
+    }
+};
