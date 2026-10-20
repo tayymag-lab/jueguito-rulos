@@ -493,3 +493,165 @@ const ArcadeRulings = {
         }
     }
 };
+
+
+/* MINIJUEGO 03 — EL CAMINO HACIA VOS */
+
+const LaberintoAmor = {
+    mapa: [
+        "#########",
+        "#S..#...#",
+        "#.#.#.#.#",
+        "#.#...#.#",
+        "#.###.#.#",
+        "#...#...#",
+        "###.#.###",
+        "#.....E.#",
+        "#########"
+    ],
+
+    x: 1,
+    y: 1,
+    pasos: 0,
+    completado: false,
+
+    iniciar() {
+        this.x = 1;
+        this.y = 1;
+        this.pasos = 0;
+        this.completado = false;
+
+        Juego.mostrar(`
+            <div class="corazon">🌿</div>
+            <h1>El camino hacia vos</h1>
+
+            <div class="subtitulo">
+                Hay recuerdos que vale la pena encontrar.
+                <br><br>
+                Guiá a Rulings por el laberinto
+                hasta llegar al corazón.
+            </div>
+
+            <div class="laberinto">
+                <div class="laberinto-tablero"
+                     id="laberinto-tablero"></div>
+
+                <div class="laberinto-estado"
+                     id="laberinto-estado">
+                    Pasos: 0
+                </div>
+
+                <div class="laberinto-controles">
+                    <button onclick="LaberintoAmor.mover(0,-1)"
+                            aria-label="Arriba">↑</button>
+
+                    <div class="laberinto-fila">
+                        <button onclick="LaberintoAmor.mover(-1,0)"
+                                aria-label="Izquierda">←</button>
+                        <button onclick="LaberintoAmor.mover(0,1)"
+                                aria-label="Abajo">↓</button>
+                        <button onclick="LaberintoAmor.mover(1,0)"
+                                aria-label="Derecha">→</button>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="LaberintoAmor.iniciar()">
+                Reiniciar laberinto
+            </button>
+
+            <button onclick="menuNiveles()">
+                Volver al menú
+            </button>
+        `);
+
+        this.dibujar();
+    },
+
+    dibujar() {
+        const tablero =
+            document.getElementById("laberinto-tablero");
+
+        if (!tablero) return;
+
+        tablero.innerHTML = this.mapa.map((fila, y) =>
+            [...fila].map((celda, x) => {
+                let clase = "laberinto-celda";
+                let contenido = "";
+
+                if (celda === "#") {
+                    clase += " laberinto-pared";
+                    contenido = "🌿";
+                }
+
+                if (celda === "E") {
+                    clase += " laberinto-meta";
+                    contenido = "💗";
+                }
+
+                if (this.x === x && this.y === y) {
+                    clase += " laberinto-jugador";
+                    contenido = "🧑🏻‍🦱";
+                }
+
+                return `<div class="${clase}">${contenido}</div>`;
+            }).join("")
+        ).join("");
+
+        const estado =
+            document.getElementById("laberinto-estado");
+
+        if (estado) {
+            estado.textContent = `Pasos: ${this.pasos}`;
+        }
+    },
+
+    mover(dx, dy) {
+        if (this.completado) return;
+
+        const nuevoX = this.x + dx;
+        const nuevoY = this.y + dy;
+
+        const fila = this.mapa[nuevoY];
+
+        if (!fila || !fila[nuevoX] ||
+            fila[nuevoX] === "#") return;
+
+        this.x = nuevoX;
+        this.y = nuevoY;
+        this.pasos++;
+
+        if (fila[nuevoX] === "E") {
+            this.completado = true;
+            this.ganar();
+            return;
+        }
+
+        this.dibujar();
+    },
+
+    ganar() {
+        Juego.celebrar();
+
+        Juego.mostrar(`
+            <div class="corazon">💗</div>
+            <h1>¡Encontraste el camino!</h1>
+
+            <div class="subtitulo">
+                Después de ${this.pasos} pasos,
+                llegaste al corazón.
+                <br><br>
+                Como aquella vez en la
+                Reserva Ecológica de Palermo.
+                <br><br>
+                Hay momentos que no necesitan
+                repetirse para ser inolvidables.
+                ♡
+            </div>
+
+            <button onclick="final03()">
+                Desbloquear el siguiente recuerdo ♡
+            </button>
+        `);
+    }
+};
