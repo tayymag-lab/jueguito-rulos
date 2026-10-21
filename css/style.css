@@ -853,3 +853,107 @@ button:disabled {
         transition: none;
     }
 }
+
+
+/* ====================================
+   CAPÍTULO 01 — NOCHE DE AÑO NUEVO
+==================================== */
+
+.novela-escenario-doble {
+    position: relative;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            #ffd7e5 0 1px,
+            transparent 3px
+        ),
+        radial-gradient(
+            circle at 75% 15%,
+            #ffe8ba 0 2px,
+            transparent 4px
+        ),
+        radial-gradient(
+            circle at 55% 40%,
+            #f5b4d5 0 1px,
+            transparent 3px
+        ),
+        radial-gradient(
+            ellipse at 50% 100%,
+            #8b3b6666,
+            transparent 70%
+        ),
+        linear-gradient(
+            180deg,
+            #130f2b 0%,
+            #2e1939 55%,
+            #532b46 100%
+        );
+
+    box-shadow:
+        inset 0 0 35px #f3a5ca15,
+        0 8px 30px #00000033;
+}
+
+/* Luces nocturnas */
+
+.novela-escenario-doble::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        radial-gradient(circle, #ffe6ba 1px, transparent 2px),
+        radial-gradient(circle, #f7bdd7 1px, transparent 2px);
+
+    background-size: 55px 65px, 83px 75px;
+    background-position: 10px 15px, 35px 40px;
+
+    opacity: 0.55;
+    pointer-events: none;
+
+    animation: lucesAnioNuevo 4s ease-in-out infinite alternate;
+}
+
+/* Brillo en el horizonte */
+
+.novela-escenario-doble::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 30%;
+
+    background: linear-gradient(
+        0deg,
+        #c45b8330,
+        transparent
+    );
+
+    pointer-events: none;
+}
+
+.novela-escenario-doble .novela-figura {
+    z-index: 2;
+}
+
+.novela-escenario-doble .novela-corazon-centro {
+    z-index: 4;
+}
+
+@keyframes lucesAnioNuevo {
+    from {
+        opacity: 0.2;
+    }
+
+    to {
+        opacity: 0.75;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .novela-escenario-doble::before {
+        animation: none;
+    }
+}
