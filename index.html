@@ -325,14 +325,17 @@ function respuestaAnioNuevo(opcion) {
 
     };
 
-    const dialogos = reacciones[opcion];
+const dialogos = reacciones[opcion];
 
-    if (!dialogos) return;
+if (!dialogos) return;
 
-    NovelaVisual.iniciar(dialogos, pregunta1);
+alert("¡Lio eligió la opción " + opcion + "! ♡");
+
+NovelaVisual.iniciar(dialogos, pregunta1);
+
 }
 
-}
+
 
 function pregunta1() {
 
