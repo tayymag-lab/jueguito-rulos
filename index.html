@@ -501,36 +501,97 @@ function pregunta2() {
 }
 
 
+
+/* =====================================
+   CAPÍTULO 01 — ESCENA FINAL
+===================================== */
+
 function finalPregunta() {
 
-desbloquearNivel(2);
-Juego.celebrar();
+    desbloquearNivel(2);
 
-    document.querySelector(".contenedor").innerHTML = `
+    NovelaVisual.iniciar([
 
-        <div class="corazon">💗</div>
+        {
+            personaje: "Maggie",
+            texto: "Y pensar que todo empezó una noche de Año Nuevo, hablando de cualquier boludes..."
+        },
 
-        <h1>¡Seguimos!</h1>
+        {
+            personaje: "Lio",
+            texto: "Y con una apuesta que terminé perdiendo."
+        },
 
-        <div class="subtitulo">
+        {
+            personaje: "Maggie",
+            texto: "JAJAJA, sí. Pero ¿sabés algo? Me alegra muchísimo que hayas perdido."
+        },
 
-            Cada respuesta nos acerca
-            un poquitito más al final.
+        {
+            personaje: "Lio",
+            texto: "¿Por qué?"
+        },
 
-            <br><br>
+        {
+            personaje: "Maggie",
+            texto: "Porque si esa noche hubiera sido diferente, quizás nunca habríamos llegado hasta acá."
+        },
 
-            Y todavía quedan muchas
-            cosas por descubrir.
+        {
+            personaje: "Maggie",
+            texto: "Y aunque todavía no lo sabíamos... nuestra historia ya había empezado. ♡"
+        }
+
+    ], completarCapitulo01);
+}
+
+
+/* PANTALLA DE CAPÍTULO COMPLETADO */
+
+function completarCapitulo01() {
+
+    Juego.celebrar();
+
+    Juego.mostrar(`
+        <div class="capitulo-completado">
+
+            <div class="corazon">💗</div>
+
+            <div class="capitulo-etiqueta">
+                ✦ RECUERDO COMPLETADO ✦
+            </div>
+
+            <h1>
+                Capítulo 01
+            </h1>
+
+            <h2>
+                El inicio de nosotros
+            </h2>
+
+            <div class="subtitulo">
+                Hay encuentros que parecen casualidad,
+                hasta que se convierten en
+                nuestros recuerdos favoritos.
+                <br><br>
+                Y aquella noche fue solamente
+                el comienzo de todo. ♡
+            </div>
+
+            <div class="capitulo-desbloqueo">
+                ♡ Capítulo 02 desbloqueado ♡
+                <br>
+                <span>Nuestra apuesta</span>
+            </div>
+
+            <button onclick="menuNiveles()">
+                Continuar nuestra historia ♡
+            </button>
 
         </div>
-
-<button onclick="menuNiveles()">
-   Siguiente nivel
-</button>
-
-    `;
-
+    `);
 }
+
 
 function capitulo02() {
    Juego.mostrar(`
