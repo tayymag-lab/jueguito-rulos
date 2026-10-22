@@ -1145,3 +1145,66 @@ button:disabled {
         animation: none;
     }
 }
+
+/* FUEGOS ARTIFICIALES SUAVES */
+
+.fuego-artificial {
+    position: absolute;
+    z-index: 2;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+
+    box-shadow:
+        0 -22px #ffd1e6,
+        0 22px #ffd1e6,
+        22px 0 #ffe1a9,
+        -22px 0 #ffe1a9,
+        16px 16px #f6a7d2,
+        -16px -16px #f6a7d2,
+        16px -16px #f6a7d2,
+        -16px 16px #f6a7d2;
+
+    animation: explotarAnioNuevo 4s ease-out infinite;
+}
+
+.fuego-uno {
+    top: 24%;
+    left: 23%;
+}
+
+.fuego-dos {
+    top: 19%;
+    right: 22%;
+    animation-delay: 2s;
+}
+
+@keyframes explotarAnioNuevo {
+    0%, 12% {
+        opacity: 0;
+        transform: scale(0.1);
+    }
+
+    25% {
+        opacity: 0.85;
+        transform: scale(0.75);
+    }
+
+    48% {
+        opacity: 0;
+        transform: scale(1.4);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.4);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .fuego-artificial {
+        animation: none;
+        opacity: 0;
+    }
+}
