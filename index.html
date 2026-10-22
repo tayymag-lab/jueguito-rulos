@@ -73,8 +73,9 @@
 </div>
 
 
-<script src="js/game.js"></script>
-<script src="js/minijuegos.js"></script>
+<script src="js/game.js?v=4"></script>
+<script src="js/minijuegos.js?v=4"></script>
+
 <script>
 
 
@@ -508,7 +509,6 @@ function pregunta2() {
 
 function finalPregunta() {
 
-    desbloquearNivel(2);
 
     NovelaVisual.iniciar([
 
@@ -550,7 +550,7 @@ function finalPregunta() {
 
 function completarCapitulo01() {
 
-    Juego.celebrar();
+desbloquearNivel(2);
 
     Juego.mostrar(`
         <div class="capitulo-completado">
@@ -590,6 +590,7 @@ function completarCapitulo01() {
 
         </div>
     `);
+Juego.celebrar();
 }
 
 
