@@ -53,6 +53,7 @@ const NovelaVisual = {
     escenas: [],
     posicion: 0,
     alTerminar: null,
+    estiloEscenario: "",
 
     temporizador: null,
     escribiendo: false,
@@ -95,7 +96,7 @@ const NovelaVisual = {
                     ✦ UN RECUERDO NUESTRO ✦
                 </div>
 
-                <div class="novela-escenario novela-escenario-doble">
+             <div class="novela-escenario novela-escenario-doble ${this.estiloEscenario || ""}">
 <div class="fuego-artificial fuego-uno"></div>
 <div class="fuego-artificial fuego-dos"></div>
 
