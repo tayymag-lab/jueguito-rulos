@@ -1009,3 +1009,139 @@ button:disabled {
     font-style: italic;
     color: #f4c0d9;
 }
+
+
+/* =========================================
+   CAPÍTULO 01 — AÑO NUEVO CINEMATOGRÁFICO
+   Ciudad, estrellas y fuegos artificiales
+========================================= */
+
+.novela-escenario-doble {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 90%,
+            rgba(192, 89, 139, 0.35),
+            transparent 65%
+        ),
+        linear-gradient(
+            180deg,
+            #100d28 0%,
+            #24152f 50%,
+            #522b49 100%
+        ) !important;
+}
+
+/* Ciudad pixelada al fondo */
+
+.novela-escenario-doble::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 30%;
+    z-index: 0;
+    pointer-events: none;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            transparent 0 9px,
+            #f6c38a 9px 12px,
+            transparent 12px 23px
+        ) 0 17px / 100% 28px repeat-y,
+        linear-gradient(
+            90deg,
+            #24182e 0% 13%,
+            #38223d 13% 28%,
+            #1c162b 28% 44%,
+            #39203b 44% 61%,
+            #21182e 61% 79%,
+            #37213a 79% 100%
+        );
+
+    opacity: 0.75;
+    clip-path: polygon(
+        0 30%, 12% 30%,
+        12% 12%, 27% 12%,
+        27% 40%, 40% 40%,
+        40% 0%, 57% 0%,
+        57% 25%, 72% 25%,
+        72% 8%, 86% 8%,
+        86% 35%, 100% 35%,
+        100% 100%, 0 100%
+    );
+}
+
+/* Estrellas y destellos de Año Nuevo */
+
+.novela-escenario-doble::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle,
+            #ffe7f1 0 2px,
+            transparent 3px
+        ) 15% 20% / 95px 85px,
+
+        radial-gradient(
+            circle,
+            #ffd8a3 0 2px,
+            transparent 4px
+        ) 60% 15% / 130px 110px,
+
+        radial-gradient(
+            circle,
+            #ffb6d8 0 1px,
+            transparent 3px
+        ) 30% 60% / 75px 90px;
+
+    opacity: 0.65;
+    animation: estrellasAnioNuevo 3s ease-in-out infinite alternate;
+}
+
+@keyframes estrellasAnioNuevo {
+    from {
+        opacity: 0.25;
+    }
+
+    to {
+        opacity: 0.85;
+    }
+}
+
+/* Personajes delante del paisaje */
+
+.novela-escenario-doble .novela-figura {
+    position: relative;
+    z-index: 3;
+}
+
+.novela-escenario-doble .novela-corazon-centro {
+    z-index: 4;
+}
+
+/* Brillo romántico de los personajes */
+
+.novela-escenario-doble .novela-activo img {
+    filter:
+        drop-shadow(0 0 9px rgba(255, 185, 215, 0.3))
+        drop-shadow(0 7px 10px rgba(0, 0, 0, 0.4));
+}
+
+/* Respetar accesibilidad */
+
+@media (prefers-reduced-motion: reduce) {
+    .novela-escenario-doble::before {
+        animation: none;
+    }
+}
