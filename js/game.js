@@ -96,6 +96,8 @@ const NovelaVisual = {
                 </div>
 
                 <div class="novela-escenario novela-escenario-doble">
+<div class="fuego-artificial fuego-uno"></div>
+<div class="fuego-artificial fuego-dos"></div>
 
                     <div class="novela-figura
                         ${hablaMaggie ? "novela-activo" : "novela-inactivo"}">
