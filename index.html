@@ -618,44 +618,108 @@ function capitulo02() {
     `);
 }
 
+
+/* =====================================
+   CAPÍTULO 02 — NUESTRA APUESTA
+===================================== */
+
 function apuesta02() {
-    document.querySelector(".contenedor").innerHTML = `
-        <div class="corazon">🍨</div>
-        <h1>El trato</h1>
-
-        <div class="subtitulo">
-          Yo te dije mi nombre y después
-            solte una apuesta:
-            <br><br>
-            <em>«Mañana ni te vas a acordar
-            mi nombre»</em>
-            <br><br>
-            Y vos, orgulloso, aceptaste esa apuesta... 
-            y acordamos que el premio sería un McDonald's.
-            <br><br>
-            Y así, quedó sellado ese trato.
-        </div>
-
-        <button onclick="prueba02()">¿Y despues?</button>
-    `;
+    NovelaVisual.iniciar([
+        {
+            personaje: "Maggie",
+            texto: "¿Te acordás de la noche de Año Nuevo?"
+        },
+        {
+            personaje: "Lio",
+            texto: "¿Cómo olvidarla?"
+        },
+        {
+            personaje: "Maggie",
+            texto: "Bueno... hay algo que sí olvidaste..."
+        },
+        {
+            personaje: "Lio",
+            texto: "No sé de qué me estás hablando..."
+        },
+        {
+            personaje: "Maggie",
+            texto: "JAJAJA. Te dije mi nombre y te jugué que no te ibas a acordar"
+        },
+        {
+            personaje: "Lio",
+            texto: "Y yo, confiando en mi increíble memoria, acepté."
+        },
+        {
+            personaje: "Maggie",
+            texto: "El premio era un Mac. Y yo ya sabía que iba a ganar."
+        },
+        {
+            personaje: "Lio",
+            texto: "Qué poca fe me tenías..."
+        }
+    ], prueba02);
 }
 
 function prueba02() {
-    document.querySelector(".contenedor").innerHTML = `
-        <div class="corazon">👀</div>
-        <h1>Dos días después...</h1>
+    NovelaVisual.iniciar([
+        {
+            personaje: "Maggie",
+            texto: "Pasaron dos días y nos volvimos a encontrar."
+        },
+        {
+            personaje: "Maggie",
+            texto: "Bueno, a ver... ¿y cómo me llamo?"
+        },
+        {
+            personaje: "Lio",
+            texto: "Obviamente que me acuerdo."
+        },
+        {
+            personaje: "Maggie",
+            texto: "Dale, entonces decilo."
+        },
+        {
+            personaje: "Lio",
+            texto: "..."
+        },
+        {
+            personaje: "Maggie",
+            texto: "¿Y? Te estoy esperando."
+        },
+        {
+            personaje: "Lio",
+            texto: "¿Abigail...?"
+        },
+        {
+            personaje: "Maggie",
+            texto: "¡ENCIMA DIJISTE OTRO NOMBRE! JAJAJA."
+        },
+        {
+            personaje: "Lio",
+            texto: "Creo que tenemos un pequeño problema."
+        },
+        {
+            personaje: "Maggie",
+            texto: "Sí. Que ahora me debés un McDonald's."
+        }
+    ], decisionApuesta02);
+}
+
+/* Elegir la excusa de Lio */
+
+function decisionApuesta02() {
+    Juego.mostrar(`
+        <div class="corazon">🍔</div>
+
+        <h1>La defensa de Rulitos</h1>
 
         <div class="subtitulo">
-            Nos volvimos a ver y
-            te pregunte mi nombre...
+            Lio perdió la apuesta.
             <br><br>
-            Habia llegado el momento de demostrar
-            que tenías una memoria impecable.
+            Pero todavía tiene una última
+            oportunidad de defenderse...
             <br><br>
-            Bueno... impecable no tanto.
-            <br><br>
-            <strong>¡No te acordaste y encima
-            dijiste otro nombre!</strong>
+            <strong>¿Cuál va a ser tu excusa?</strong>
         </div>
 
         <div class="opciones">
@@ -668,71 +732,190 @@ function prueba02() {
             </button>
 
             <button onclick="resultado02('C')">
-                No hay defensa posible...💔
+                No hay defensa posible... 💔
             </button>
         </div>
-    `;
+    `);
 }
+
+/* Reacción según la respuesta */
 
 function resultado02(opcion) {
-    let reaccion = "";
+    let dialogos = [];
 
     if (opcion === "A") {
-        reaccion = "JAJAJA, tu memoria decidió tomarse el día libre. 😭";
+        dialogos = [
+            {
+                personaje: "Lio",
+                texto: "Mi memoria decidió abandonarme en el peor momento."
+            },
+            {
+                personaje: "Maggie",
+                texto: "JAJAJA. Justo cuando tenías que acordarte UNA sola cosa."
+            }
+        ];
     } else if (opcion === "B") {
-        reaccion = "¡Y menos mal! Porque no iba a dejar pasar esa apuesta. 🍟";
+        dialogos = [
+            {
+                personaje: "Lio",
+                texto: "Bueno, ¡pero al menos pagué el McDonald's!"
+            },
+            {
+                personaje: "Maggie",
+                texto: "Y menos mal. Porque esa hamburguesa me la había ganado."
+            }
+        ];
     } else {
-        reaccion = "Por fin reconocés tus errores, señor Rulitos JAJAJA. 🤍";
+        dialogos = [
+            {
+                personaje: "Lio",
+                texto: "No tengo defensa posible..."
+            },
+            {
+                personaje: "Maggie",
+                texto: "Por fin reconoció sus errores, señorito. JAJAJA."
+            }
+        ];
     }
 
-    document.querySelector(".contenedor").innerHTML = `
-        <div class="corazon">🏆</div>
-        <h1>Victoria de Maggie</h1>
+    dialogos.push(
+        {
+            personaje: "Maggie",
+            texto: "Bueno, basta de excusas. Tenemos una deuda pendiente."
+        },
+        {
+            personaje: "Lio",
+            texto: "¿Y ahora qué tengo que hacer?"
+        },
+        {
+            personaje: "Maggie",
+            texto: "¡Conseguirme mi Mac, obviamente! 🍟"
+        }
+    );
+
+    NovelaVisual.iniciar(dialogos, iniciarDeuda02);
+}
+
+/* Conservar el minijuego original */
+
+function iniciarDeuda02() {
+    Juego.mostrar(`
+        <div class="corazon">🍟</div>
+
+        <h1>La deuda de Lio</h1>
 
         <div class="subtitulo">
-            ${reaccion}
+            Perdiste la apuesta...
             <br><br>
-            La apuesta ya estaba condenada igual...
-<br><br>
-            Maggie ganó y vos terminaste
-            pagando el almuerzo.
+            ¡Ahora toca pagar el almuerzo!
             <br><br>
-            <strong>¡Un McDonald's para la ganadora!</strong>
+            Conseguí la comida para Maggie
+            y demostrá que al menos
+            sos bueno cumpliendo promesas. ♡
         </div>
 
-       <button onclick="ArcadeRulings.iniciar()">
-    🎮 Jugar: La deuda de Lio
-</button>
-    `;
+        <button onclick="ArcadeRulings.iniciar()">
+            🎮 ¡A conseguir la comida!
+        </button>
+    `);
 }
+
+/* Final romántico del capítulo */
 
 function final02() {
-   desbloquearNivel(3);
-Juego.celebrar();
- document.querySelector(".contenedor").innerHTML = `
-        <div class="corazon">💗</div>
-        <h1>Y pensar que...</h1>
-
-        <div class="subtitulo">
-            Todo empezó con una juntada,
-            una apuesta y un nombre
-            que no pudiste recordar.
-            <br><br>
-            Quién iba a imaginar que esa
-            pequeña anécdota terminaría
-            siendo el primer recuerdo.
-            <br><br>
-            <em>Me alegra que aquella apuesta
-            haya sido el inicio de nuestra historia.</em>
-            <br><br>
-            Te quiero, Rulitos. ♡
-        </div>
-
-        <button onclick="menuNiveles()">
-            ¡Siguiente nivel!
-        </button>
-    `;
+    NovelaVisual.iniciar([
+        {
+            personaje: "Maggie",
+            texto: "Bueno... al final si cumpliste tu promesa."
+        },
+        {
+            personaje: "Lio",
+            texto: "Obviamente. Una apuesta es una apuesta."
+        },
+        {
+            personaje: "Maggie",
+            texto: "Aunque todavía no puedo creer que hayas dicho otro nombre."
+        },
+        {
+            personaje: "Lio",
+            texto: "¿Me lo vas a recordar toda la vida?"
+        },
+        {
+            personaje: "Maggie",
+            texto: "Probablemente. JAJAJA."
+        },
+        {
+            personaje: "Maggie",
+            texto: "Pero, ¿sabés qué fue lo más lindo de haber ganado?"
+        },
+        {
+            personaje: "Lio",
+            texto: "¿La comida?"
+        },
+        {
+            personaje: "Maggie",
+            texto: "No, tontito..."
+        },
+        {
+            personaje: "Maggie",
+            texto: "Que ese juego terminó siendo una excusa para pasar más tiempo con vos."
+        },
+        {
+            personaje: "Maggie",
+            texto: "Y aunque ese día no te acordaste de mi nombre..."
+        },
+        {
+            personaje: "Maggie",
+            texto: "Yo ya empezaba a guardar el tuyo en un lugar muy especial. ♡"
+        }
+    ], completarCapitulo02);
 }
+
+/* Pantalla de recompensa */
+
+function completarCapitulo02() {
+    desbloquearNivel(3);
+
+    Juego.mostrar(`
+        <div class="capitulo-completado">
+
+            <div class="corazon">🍔💗</div>
+
+            <div class="capitulo-etiqueta">
+                ✦ RECUERDO COMPLETADO ✦
+            </div>
+
+            <h1>Capítulo 02</h1>
+
+            <h2>Nuestra apuesta</h2>
+
+            <div class="subtitulo">
+                Una apuesta perdida.
+                <br>
+                Un almuerzo ganado.
+                <br><br>
+                Y dos personas que todavía
+                no imaginaban cuánto
+                llegarían a significar
+                la una para la otra.
+                <br><br>
+                <em>Te quiero, Rulitos. ♡</em>
+            </div>
+
+            <div class="capitulo-desbloqueo">
+                🔓 Capítulo 03 desbloqueado
+            </div>
+
+            <button onclick="menuNiveles()">
+                Continuar nuestra historia ♡
+            </button>
+
+        </div>
+    `);
+
+    Juego.celebrar();
+}
+
 
 
 function capitulo03() {
