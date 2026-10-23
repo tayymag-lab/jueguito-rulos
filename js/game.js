@@ -62,6 +62,7 @@ const NovelaVisual = {
 
     iniciar(escenas, alTerminar) {
         this.detenerTexto();
+this.estiloEscenario = this.estiloEscenario || "";
 
         this.escenas = escenas;
         this.posicion = 0;
